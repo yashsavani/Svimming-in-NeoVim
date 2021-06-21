@@ -1,4 +1,6 @@
-# My Modern NeoVim Setup
+# Neovim-Config
+My Neovim Config written in Lua.
+
 
 ## Inspired by
 
