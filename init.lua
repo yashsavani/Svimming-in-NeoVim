@@ -1,20 +1,31 @@
-require("pluginlist")
-
 local cmd = vim.cmd -- To execute Vim commands e.g. cmd("pwd").
-local fn = vim.fn -- To call Vim functions e.g. fn.bufnr().
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+-- PACKER BOOTSTRAP
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+  execute 'packadd packer.nvim'
+end
 
 -- PLUGIN CONFIGS
+require("pluginlist")
+
 require("onedark").setup()
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.nvimtree")
 require("plugins.gitsigns")
+require("plugins.neogit")
 require("plugins.comment")
 require("plugins.autopairs")
 require("plugins.neoscroll")
 cmd "runtime macros/sandwich/keymap/surround.vim"
 require("plugins.indentline")
 require("plugins.dashboard")
+require("plugins.hexokinase")
 require("plugins.galaxyline")
 require("plugins.barbar")
 
@@ -25,6 +36,8 @@ vim.g.onedark_style = "warm"
 
 cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
+
+-- vim.api.nvim_set_current_dir(client.config.root_dir)
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
@@ -47,7 +60,7 @@ opt("o", "splitright", true) -- Vertical splits will automatically be to the rig
 opt("o", "termguicolors", true) -- set term gui colors most terminals support this.
 opt("w", "number", true) -- Line numbers.
 opt("w", "relativenumber", true) -- Relative line numbers.
-opt("w", "cursorline", true) -- Enable highlighting of the current line.
+opt("w", "cursorline", false) -- Enable highlighting of the current line.
 opt("o", "hlsearch", true) -- Highlight search
 opt("o", "incsearch", true) -- Search in realtime.
 opt("o", "laststatus", 2) -- Always have a status line.
@@ -76,6 +89,7 @@ opt("o", "guifont", [['Operator Mono Lig', 'Cascadia Code PL', 'MonoLisa', 'JetB
 vim.bo.iskeyword = vim.bo.iskeyword..",-"
 vim.o.iskeyword = vim.o.iskeyword..",-"
 vim.o.shortmess = vim.o.shortmess.."c"
+vim.o.formatoptions:gsub("cro", "") -- Stop extending comments
 
 -- KEY-MAPPINGS
 
@@ -116,29 +130,37 @@ map("n", "<C-]>", [[>>]], noremap_silent)
 map("n", "<C-[>", [[<<]], noremap_silent)
 
 -- Tab switch buffer.
-map("n", "<TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
-map("n", "<S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
-map("n", "<S-x>", [[:BufferClose<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
-map("n", "<A-1>", [[:BufferGoto 1<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
-
+map("n", "<Leader><TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
+map("n", "<Leader><S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
+map("n", "<Leader>w", [[:BufferClose<CR>]], noremap_silent)
+map("n", "<A-1>", [[:BufferGoto 1<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
+map("n", "<A-2>", [[:BufferGoto 2<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
+map("n", "<A-3>", [[:BufferGoto 3<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
+map("n", "<A-4>", [[:BufferGoto 4<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
+map("n", "<A-5>", [[:BufferGoto 5<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
+map("n", "<A-6>", [[:BufferGoto 6<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
 
 -- Move selected  line / block of text in visual mode.
 map("x", "K", [[:move '<-2<CR>gv-gv]], noremap_silent)
 map("x", "J", [[:move '>+1<CR>gv-gv]], noremap_silent)
+map("n", '<A-k>', [[:move -2<CR>==]], noremap_silent)
+map("n", '<A-j>', [[:move +<CR>==]], noremap_silent)
 
 -- Quick Save
 map("i", "<C-s>", [[<Esc>:w<CR>a]], noremap_silent)
 map("n", "<C-s>", [[:w<CR>]], noremap_silent)
+map("n", "<Leader>s", [[:w<CR>]], noremap_silent)
 
--- Quick Save and exit
-map("n", "<C-x>", [[:x<CR>]], noremap_silent)
+-- Quick exit
+map("n", "<Leader>q", [[:q<CR>]], noremap_silent)
+map("n", "<Leader>x", [[:close<CR>]], noremap_silent)
 
 -- Emacs sol and eol.
 map("i", "<C-e>", [[<Esc>A]], noremap_silent)
 map("i", "<C-a>", [[<Esc>I]], noremap_silent)
 
 -- Clear Highlights
-map("n", "<Leader>l", [[:noh<CR>]], noremap_silent)
+map("n", "<Leader>l", [[:set hlsearch!<CR>]], noremap_silent)
 
 -- Telescope
 map("n", "<C-p>", [[:lua require("telescope.builtin").find_files()<CR>]], noremap_silent)
@@ -159,19 +181,24 @@ map("n", "`", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 map("n", "<C-n>", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 
 -- comment toggle
-map("n", "<leader>,", ":CommentToggle<CR>", noremap_silent)
-map("v", "<leader>,", ":CommentToggle<CR>", noremap_silent)
+map("n", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
+map("v", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
+
+-- NeoGit
+map("n", "<leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]], noremap_silent)
+map("n", "<leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
 
 -- AUTOCOMMANDS
 
-cmd "filetype plugin on"
+cmd "filetype plugin indent on"
 
 cmd [[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]]
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
-   au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0 | startinsert
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+  au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0 | startinsert
+  au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+  au BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
 ]], false)
 
 -- require("highlights")

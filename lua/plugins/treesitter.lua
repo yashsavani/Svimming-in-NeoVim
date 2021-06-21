@@ -7,7 +7,7 @@ ts_config.setup {
         use_languagetree = true,
     },
     indent = { enable = true },
-    rainbow = { enable = true },
+    rainbow = { enable = true, extended_mode = true },
     autopairs = { enable = true },
     autotag = { enable = true },
     matchup = { enable = true },

@@ -17,7 +17,6 @@ return packer.startup(
     use "wbthomason/packer.nvim"
 
     -- Themes
-    use {"dracula/vim", as = "dracula"}
     use 'navarasu/onedark.nvim'
 
     -- Tree-Sitter
@@ -27,14 +26,23 @@ return packer.startup(
       requires = {
         "windwp/nvim-ts-autotag",
         "andymass/vim-matchup",
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        "p00f/nvim-ts-rainbow",
       }
     })
 
     -- Language Server
     use ({
       "neovim/nvim-lspconfig",
-      requires = { "kabouzeid/nvim-lspinstall" }
+      requires = { "kabouzeid/nvim-lspinstall", "glepnir/lspsaga.nvim" }
     })
+
+    -- Autocomplete
+    use {
+      "hrsh7th/nvim-compe",
+      requires = { "hrsh7th/vim-vsnip" }
+    }
+
 
     -- Telescope
     use({
@@ -59,7 +67,10 @@ return packer.startup(
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" }
     })
-    use "TimUntersberger/neogit"
+    use({
+      "TimUntersberger/neogit",
+      requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" }
+    })
 
     -- Miscellaneous
     use "terrortylor/nvim-comment" 
@@ -67,9 +78,12 @@ return packer.startup(
     use "karb94/neoscroll.nvim"
     use "folke/which-key.nvim"
     use "machakann/vim-sandwich"
-    use "justinmk/vim-sneak"
+    use "ggandor/lightspeed.nvim"
     use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
-    use 'glepnir/dashboard-nvim'
+    use "glepnir/dashboard-nvim"
+    use {"RRethy/vim-hexokinase", run = "make hexokinase"}
+    use "RRethy/vim-illuminate"
+    use { "lewis6991/spellsitter.nvim", config = function() require('spellsitter').setup() end}
 
     -- Statuslines
     use({
