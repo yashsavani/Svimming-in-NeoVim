@@ -36,6 +36,16 @@ return packer.startup(
       "neovim/nvim-lspconfig",
       requires = { "kabouzeid/nvim-lspinstall", "glepnir/lspsaga.nvim" }
     })
+    use {
+      "ahmedkhalf/lsp-rooter.nvim",
+      config = function()
+        require("lsp-rooter").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
 
     -- Autocomplete
     use {
