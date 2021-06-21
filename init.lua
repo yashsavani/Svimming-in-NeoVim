@@ -102,7 +102,6 @@ map("n", "<Space>", [[<NOP>]], noremap_silent)
 -- Better escapes.
 map("i", "jk", [[<Esc>]], noremap_silent)
 map("c", "jk", [[<C-C>]], noremap_silent)
-map("i", "kj", [[<Esc>]], noremap_silent)
 
 -- Better window resizing.
 map("n", "<S-Left>", [[:vertical resize +2<CR>]], noremap_silent)
@@ -114,6 +113,16 @@ map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 map("n", "<leader>tl", [[<Cmd>vnew term://zsh <CR>]], noremap_silent) -- term over right
 map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10 <CR>]], noremap_silent) --  term bottom
 map("n", "<leader>tt", [[<Cmd>tabnew | term <CR>]], noremap_silent) -- term newtab
+map("t", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("t", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("t", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("t", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("i", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("i", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("i", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("i", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("t", "<Esc>", [[<C-\><C-n>]], noremap_silent)
+map("t", "jk", [[<C-\><C-n>]], noremap_silent)
 
 -- Better window navigation.
 map("n", "<C-h>", [[<C-w>h]], noremap_silent)
