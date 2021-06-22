@@ -219,7 +219,7 @@ cmd [[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabs
 vim.api.nvim_exec([[
   au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0 | startinsert
   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-  au BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
+  au BufEnter {} if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
 ]], false)
 
 -- require("highlights")
