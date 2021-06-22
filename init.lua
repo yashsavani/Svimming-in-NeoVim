@@ -14,7 +14,8 @@ end
 require("pluginlist")
 
 require("plugins.treesitter")
-require("plugins.completion")
+require("plugins.lspconfig")
+require("plugins.compeconfig")
 require("plugins.telescope")
 require("plugins.nvimtree")
 require("plugins.gitsigns")
@@ -38,16 +39,16 @@ cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
 
 -- THEME
--- require("onedark").setup()
--- vim.g.onedark_style = "warm"
+require("onedark").setup()
+vim.g.onedark_style = "warm"
 
-cmd "colorscheme neon"
-vim.g.neon_style = "doom"
-vim.g.neon_italic_comment = true
-vim.g.neon_italic_keyword = true
-vim.g.neon_italic_boolean = true
-vim.g.neon_italic_function = true
-vim.g.neon_bold = true
+-- cmd "colorscheme neon"
+-- vim.g.neon_style = "doom"
+-- vim.g.neon_italic_comment = true
+-- vim.g.neon_italic_keyword = true
+-- vim.g.neon_italic_boolean = true
+-- vim.g.neon_italic_function = true
+-- vim.g.neon_bold = true
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
@@ -122,22 +123,22 @@ map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 map("n", "<leader>tl", [[<Cmd>vnew term://zsh <CR>]], noremap_silent) -- term over right
 map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10 <CR>]], noremap_silent) --  term bottom
 map("n", "<leader>tt", [[<Cmd>tabnew | term <CR>]], noremap_silent) -- term new tab
-map("t", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
-map("t", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
-map("t", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
-map("t", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
-map("i", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
-map("i", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
-map("i", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
-map("i", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("t", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("t", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("t", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("t", "<A-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("i", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("i", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("i", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("i", "<A-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
 map("t", "<Esc>", [[<C-\><C-n>]], noremap_silent)
 map("t", "jk", [[<C-\><C-n>]], noremap_silent)
 
 -- Better window navigation.
-map("n", "<C-h>", [[<C-w>h]], noremap_silent)
-map("n", "<C-j>", [[<C-w>j]], noremap_silent)
-map("n", "<C-l>", [[<C-w>l]], noremap_silent)
-map("n", "<C-k>", [[<C-w>k]], noremap_silent)
+map("n", "<A-h>", [[<C-w>h]], noremap_silent)
+map("n", "<A-j>", [[<C-w>j]], noremap_silent)
+map("n", "<A-l>", [[<C-w>l]], noremap_silent)
+map("n", "<A-k>", [[<C-w>k]], noremap_silent)
 
 -- Better indentation.
 map("v", "<", [[<gv]], noremap_silent)

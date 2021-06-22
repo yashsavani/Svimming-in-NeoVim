@@ -48,13 +48,21 @@ return packer.startup(
         }
       end
     }
+    -- use "onsails/lspkind-nvim"
+    -- use "sbdchd/neoformat"
+    -- use "lukas-reineke/format.nvim",
+    -- use "code-biscuits/nvim-biscuits"
+    -- use({
+    --   "folke/lsp-trouble.nvim",
+    --   requires = { "kyazdani42/nvim-web-devicons" },
+    -- }),
+    -- use "kevinhwang91/nvim-bqf"
 
     -- Autocomplete
     use {
       "hrsh7th/nvim-compe",
       requires = { "hrsh7th/vim-vsnip" }
     }
-
 
     -- Telescope
     use({
