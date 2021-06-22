@@ -10,10 +10,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
--- PLUGIN CONFIGS
+-- PLUGIN CONFIGURATION
 require("pluginlist")
 
 require("plugins.treesitter")
+require("plugins.completion")
 require("plugins.telescope")
 require("plugins.nvimtree")
 require("plugins.gitsigns")
@@ -48,8 +49,6 @@ vim.g.neon_italic_boolean = true
 vim.g.neon_italic_function = true
 vim.g.neon_bold = true
 
--- vim.api.nvim_set_current_dir(client.config.root_dir)
-
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
   scopes[scope][key] = value
@@ -61,8 +60,8 @@ end
 opt("o", "encoding", "utf-8") -- Set encoding.
 opt("o", "fileencoding", "utf-8") -- Set encoding written to file.
 opt("o", "hidden", true) -- Allow background buffers.
-opt("o", "pumblend", 10) -- Enables transperency of popup menu.
-opt("o", "pumheight", 15) -- Makes popoup menu smaller.
+opt("o", "pumblend", 10) -- Enables transparency of popup menu.
+opt("o", "pumheight", 15) -- Makes popup menu smaller.
 opt("o", "ruler", true) -- Show cursor position
 opt("o", "cmdheight", 2) -- More space for displaying messages.
 opt("o", "mouse", "a") -- Enable mouse.
@@ -73,7 +72,7 @@ opt("w", "number", true) -- Line numbers.
 opt("w", "relativenumber", true) -- Relative line numbers.
 opt("w", "cursorline", false) -- Enable highlighting of the current line.
 opt("o", "hlsearch", true) -- Highlight search
-opt("o", "incsearch", true) -- Search in realtime.
+opt("o", "incsearch", true) -- Search in real-time.
 opt("o", "laststatus", 2) -- Always have a status line.
 opt("o", "scrolloff", 5) -- Keep 5 lines between cursor and vertical edges of window.
 opt("o", "showmatch", true) -- Show matching brackets.
@@ -96,12 +95,10 @@ opt("w", "signcolumn", "yes") -- Always show the signcolumn, otherwise it would 
 opt("o", "updatetime", 300) -- Faster completion.
 opt("o", "timeoutlen", 500) -- Default is much longer at 1000ms.
 opt("o", "background", "dark") -- Dark Background
+opt("o", "completeopt", "menu,menuone,noselect") -- To allow compe
 
-vim.bo.iskeyword = vim.bo.iskeyword..",-"
-vim.o.iskeyword = vim.o.iskeyword..",-"
 vim.o.shortmess = vim.o.shortmess.."c"
-vim.o.formatoptions:gsub("cro", "") -- Stop extending comments
-
+vim.o.formatoptions = vim.o.formatoptions:gsub("cro", "") -- Stop extending comments
 
 -- KEY-MAPPINGS
 
@@ -109,7 +106,7 @@ local noremap_silent = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
 
 -- NOPS
-map("n", "<Space>", [[<NOP>]], noremap_silent)
+-- map("n", "<Space>", [[<NOP>]], noremap_silent)
 
 -- Better escapes.
 map("i", "jk", [[<Esc>]], noremap_silent)
@@ -124,7 +121,7 @@ map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 -- Terminal
 map("n", "<leader>tl", [[<Cmd>vnew term://zsh <CR>]], noremap_silent) -- term over right
 map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10 <CR>]], noremap_silent) --  term bottom
-map("n", "<leader>tt", [[<Cmd>tabnew | term <CR>]], noremap_silent) -- term newtab
+map("n", "<leader>tt", [[<Cmd>tabnew | term <CR>]], noremap_silent) -- term new tab
 map("t", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
 map("t", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
 map("t", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
@@ -145,14 +142,14 @@ map("n", "<C-k>", [[<C-w>k]], noremap_silent)
 -- Better indentation.
 map("v", "<", [[<gv]], noremap_silent)
 map("v", ">", [[>gv]], noremap_silent)
-map("v", "<C-]>", [[>gv]], noremap_silent)
-map("v", "<C-[>", [[<gv]], noremap_silent)
-map("n", "<C-]>", [[>>]], noremap_silent)
-map("n", "<C-[>", [[<<]], noremap_silent)
+-- map("v", "<C-]>", [[>gv]], noremap_silent)
+-- map("v", "<C-[>", [[<gv]], noremap_silent)
+-- map("n", "<C-]>", [[>>]], noremap_silent)
+-- map("n", "<C-[>", [[<<]], noremap_silent)
 
 -- Tab switch buffer.
 map("n", "<TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
-map("n", "<S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
+map("n", "<S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev buffer.
 map("n", "<Leader>w", [[:BufferClose<CR>]], noremap_silent)
 map("n", "<A-1>", [[:BufferGoto 1<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
 map("n", "<A-2>", [[:BufferGoto 2<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
@@ -215,11 +212,9 @@ cmd "filetype plugin indent on"
 
 cmd [[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]]
 
--- hide line numbers in terminal windows
 vim.api.nvim_exec([[
-  au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0 | startinsert
+  au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0
   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
   au BufEnter {} if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
+  au BufRead,BufNewFile *.lua set formatoptions-=cro
 ]], false)
-
--- require("highlights")
