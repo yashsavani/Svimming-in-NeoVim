@@ -17,7 +17,9 @@ return packer.startup(
     use "wbthomason/packer.nvim"
 
     -- Themes
-    use 'navarasu/onedark.nvim'
+    use "navarasu/onedark.nvim"
+    use "sainnhe/gruvbox-material"
+    use "rafamadriz/neon"
 
     -- Tree-Sitter
     use({

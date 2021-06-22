@@ -13,7 +13,6 @@ end
 -- PLUGIN CONFIGS
 require("pluginlist")
 
-require("onedark").setup()
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.nvimtree")
@@ -29,13 +28,25 @@ require("plugins.hexokinase")
 require("plugins.galaxyline")
 require("plugins.barbar")
 
+
 -- SETTINGS
 vim.g.mapleader = " "
-vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python3"
-vim.g.onedark_style = "warm"
+vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
 
 cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
+
+-- THEME
+-- require("onedark").setup()
+-- vim.g.onedark_style = "warm"
+
+cmd "colorscheme neon"
+vim.g.neon_style = "doom"
+vim.g.neon_italic_comment = true
+vim.g.neon_italic_keyword = true
+vim.g.neon_italic_boolean = true
+vim.g.neon_italic_function = true
+vim.g.neon_bold = true
 
 -- vim.api.nvim_set_current_dir(client.config.root_dir)
 
@@ -84,12 +95,13 @@ opt("o", "showtabline", 2) -- Always show tabs.
 opt("w", "signcolumn", "yes") -- Always show the signcolumn, otherwise it would shift the text each time.
 opt("o", "updatetime", 300) -- Faster completion.
 opt("o", "timeoutlen", 500) -- Default is much longer at 1000ms.
-opt("o", "guifont", [['Operator Mono Lig', 'Cascadia Code PL', 'MonoLisa', 'JetBrains Mono', 'Fira Code', 'MenloLGS NF', Menlo, Monaco, 'Courier New', monospace]]) -- Fonts!!!
+opt("o", "background", "dark") -- Dark Background
 
 vim.bo.iskeyword = vim.bo.iskeyword..",-"
 vim.o.iskeyword = vim.o.iskeyword..",-"
 vim.o.shortmess = vim.o.shortmess.."c"
 vim.o.formatoptions:gsub("cro", "") -- Stop extending comments
+
 
 -- KEY-MAPPINGS
 
@@ -139,8 +151,8 @@ map("n", "<C-]>", [[>>]], noremap_silent)
 map("n", "<C-[>", [[<<]], noremap_silent)
 
 -- Tab switch buffer.
-map("n", "<Leader><TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
-map("n", "<Leader><S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
+map("n", "<TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
+map("n", "<S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev bufffer.
 map("n", "<Leader>w", [[:BufferClose<CR>]], noremap_silent)
 map("n", "<A-1>", [[:BufferGoto 1<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
 map("n", "<A-2>", [[:BufferGoto 2<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
