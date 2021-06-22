@@ -114,9 +114,9 @@ map("i", "jk", [[<Esc>]], noremap_silent)
 map("c", "jk", [[<C-C>]], noremap_silent)
 
 -- Better window resizing.
-map("n", "<S-Left>", [[:vertical resize +2<CR>]], noremap_silent)
+map("n", "<S-Right>", [[:vertical resize +2<CR>]], noremap_silent)
 map("n", "<S-Up>", [[:resize -2<CR>]], noremap_silent)
-map("n", "<S-Right>", [[:vertical resize -2<CR>]], noremap_silent)
+map("n", "<S-Left>", [[:vertical resize -2<CR>]], noremap_silent)
 map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 
 -- Terminal
@@ -162,7 +162,7 @@ map("n", "<A-6>", [[:BufferGoto 6<CR>]], noremap_silent) -- Alt+n will go to the
 -- Move selected  line / block of text in visual mode.
 map("x", "K", [[:move '<-2<CR>gv-gv]], noremap_silent)
 map("x", "J", [[:move '>+1<CR>gv-gv]], noremap_silent)
-map("n", '<A-k>', [[:move -2<CR>==]], noremap_silent)
+map("n", '<A-u>', [[:move -2<CR>==]], noremap_silent)
 map("n", '<A-j>', [[:move +<CR>==]], noremap_silent)
 
 -- Quick Save
