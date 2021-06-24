@@ -48,15 +48,15 @@ return packer.startup(
         }
       end
     }
-    -- use "onsails/lspkind-nvim"
-    -- use "sbdchd/neoformat"
-    -- use "lukas-reineke/format.nvim",
-    -- use "code-biscuits/nvim-biscuits"
-    -- use({
-    --   "folke/lsp-trouble.nvim",
-    --   requires = { "kyazdani42/nvim-web-devicons" },
-    -- }),
+    use "onsails/lspkind-nvim"
+    use({
+      "folke/lsp-trouble.nvim",
+      requires = { "kyazdani42/nvim-web-devicons" },
+    })
+    use "code-biscuits/nvim-biscuits"
     -- use "kevinhwang91/nvim-bqf"
+    -- use "sbdchd/neoformat"
+    -- use "lukas-reineke/format.nvim"
 
     -- Autocomplete
     use {
