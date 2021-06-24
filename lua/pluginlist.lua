@@ -93,7 +93,7 @@ return packer.startup(
     })
 
     -- Miscellaneous
-    use "terrortylor/nvim-comment" 
+    use "terrortylor/nvim-comment"
     use "windwp/nvim-autopairs"
     use "karb94/neoscroll.nvim"
     use "folke/which-key.nvim"

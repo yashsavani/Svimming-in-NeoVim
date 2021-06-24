@@ -44,7 +44,7 @@ require("lspsaga").init_lsp_saga({
     finder_reference_icon = "  ",
     definition_preview_icon = "  ",
     border_style = "single",
-    rename_prompt_prefix = "❱❱",
+    rename_prompt_prefix = "❱❱"
 })
 
 require("trouble").setup({
