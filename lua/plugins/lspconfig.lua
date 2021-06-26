@@ -80,14 +80,6 @@ require("trouble").setup({
     use_lsp_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 })
 
-require("nvim-biscuits").setup({
-    default_config = {
-        min_distance = 5,
-        max_length = 80,
-        prefix_string = "  ",
-    },
-})
-
 local on_attach = function(client, bufnum)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnum, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnum, ...) end

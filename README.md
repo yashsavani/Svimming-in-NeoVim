@@ -147,15 +147,15 @@ For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to 
 
 ## Key-Mappings
 
-The leader key is remapped to `<Space>`.
+The Leader key is remapped to `<Space>`.
 
-### I hate escapes
+### Better escapes.
 ```
 insert: jk -> Normal mode.
 command: jk -> Cancel command.
 ```
 
-### Resize Windows
+### Better window resizing.
 ```
 normal: <S-Right> -> Increase width of window by 2 columns.
 normal: <S-Up> -> Increase height of window by 2 columns.
@@ -163,11 +163,11 @@ normal: <S-Left> -> Decrease width of window by 2 columns.
 normal: <S-Down> -> Decrease height of window by 2 columns.
 ```
 
-### Terminal
+### Better terminal keymaps.
 ```
-normal: <leader>tl -> Open a terminal in a new right window.
-normal: <leader>tj -> Open a terminal in a new bottom window.
-normal: <leader>tt -> Open a terminal in a new tab.
+normal: <Leader>tl -> Open a terminal in a new right window.
+normal: <Leader>tj -> Open a terminal in a new bottom window.
+normal: <Leader>tt -> Open a terminal in a new tab.
 terminal: <A-h> -> Move to left window.
 terminal: <A-j> -> Move to lower window.
 terminal: <A-k> -> Move to upper window.
@@ -215,16 +215,21 @@ normal: <A-u> -> Move line up.
 normal: <A-j> -> Move line down.
 ```
 
+### Better nav for autocomplete.
+```
+insert: <C-j> -> Next autocomplete option.
+insert: <C-k> -> Previous autocomplete option.
+```
+
 ### Quick Save
 ```
-normal: <C-s> -> Save.
 normal: <Leader>s -> Save.
 ```
 
 ### Quick exit
 ```
 normal: <Leader>q -> Quit.
-normal: <Leader>x -> Close.
+normal: <Leader>x -> Close Window.
 ```
 
 ### Emacs sol and eol.
@@ -264,14 +269,14 @@ normal: <C-n> -> Toggle nvim-tree.
 
 ### comment toggle
 ```
-normal: <leader>, -> Toggle Comment.
-visual: <leader>, -> Toggle Comment.
+normal: <Leader>, -> Toggle Comment.
+visual: <Leader>, -> Toggle Comment.
 ```
 
 ### Neogit
 ```
-normal: <leader>gg -> Open Neogit window.
-normal: <leader>gc -> Open Neogit commit window.
+normal: <Leader>gg -> Open Neogit window.
+normal: <Leader>gc -> Open Neogit commit window.
 ```
 
 ## Inspired by

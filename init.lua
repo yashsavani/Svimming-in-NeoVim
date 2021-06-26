@@ -38,17 +38,9 @@ vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
 cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
 
--- THEME
+-- Theme
 require("onedark").setup()
 vim.g.onedark_style = "warm"
-
--- cmd "colorscheme neon"
--- vim.g.neon_style = "doom"
--- vim.g.neon_italic_comment = true
--- vim.g.neon_italic_keyword = true
--- vim.g.neon_italic_boolean = true
--- vim.g.neon_italic_function = true
--- vim.g.neon_bold = true
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
@@ -104,10 +96,8 @@ vim.o.formatoptions = vim.o.formatoptions:gsub("cro", "") -- Stop extending comm
 -- KEY-MAPPINGS
 
 local noremap_silent = {noremap = true, silent = true}
+local noremap_silent_expr = {noremap = true, silent = true, expr = true}
 local map = vim.api.nvim_set_keymap
-
--- NOPS
--- map("n", "<Space>", [[<NOP>]], noremap_silent)
 
 -- Better escapes.
 map("i", "jk", [[<Esc>]], noremap_silent)
@@ -119,10 +109,10 @@ map("n", "<S-Up>", [[:resize -2<CR>]], noremap_silent)
 map("n", "<S-Left>", [[:vertical resize -2<CR>]], noremap_silent)
 map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 
--- Terminal
-map("n", "<leader>tl", [[<Cmd>vnew term://zsh<CR>]], noremap_silent) -- term over right
-map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10<CR>]], noremap_silent) --  term bottom
-map("n", "<leader>tt", [[<Cmd>tabnew | term<CR>]], noremap_silent) -- term new tab
+-- Better terminal keymaps.
+map("n", "<Leader>tl", [[<Cmd>vnew term://zsh<CR>]], noremap_silent) -- term over right
+map("n", "<Leader>tj", [[<Cmd>split term://zsh | resize 10<CR>]], noremap_silent) --  term bottom
+map("n", "<Leader>tt", [[<Cmd>tabnew | term<CR>]], noremap_silent) -- term new tab
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
 map("t", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
 map("t", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
@@ -143,10 +133,6 @@ map("n", "<A-k>", [[<C-w>k]], noremap_silent)
 -- Better indentation.
 map("v", "<", [[<gv]], noremap_silent)
 map("v", ">", [[>gv]], noremap_silent)
--- map("v", "<C-]>", [[>gv]], noremap_silent)
--- map("v", "<C-[>", [[<gv]], noremap_silent)
--- map("n", "<C-]>", [[>>]], noremap_silent)
--- map("n", "<C-[>", [[<<]], noremap_silent)
 
 -- Switch buffer.
 map("n", "<TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
@@ -159,29 +145,31 @@ map("n", "<A-4>", [[:BufferGoto 4<CR>]], noremap_silent) -- Alt+n will go to the
 map("n", "<A-5>", [[:BufferGoto 5<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
 map("n", "<A-6>", [[:BufferGoto 6<CR>]], noremap_silent) -- Alt+n will go to the nth buffer
 
--- Move selected  line / block of text in visual mode.
+-- Move selected line / block of text in visual mode.
 map("x", "K", [[:move '<-2<CR>gv-gv]], noremap_silent)
 map("x", "J", [[:move '>+1<CR>gv-gv]], noremap_silent)
 map("n", '<A-u>', [[:move -2<CR>==]], noremap_silent)
 map("n", '<A-j>', [[:move +<CR>==]], noremap_silent)
 
--- Quick Save
-map("i", "<C-s>", [[<Esc>:w<CR>a]], noremap_silent)
-map("n", "<C-s>", [[:w<CR>]], noremap_silent)
+-- Better nav for autocomplete.
+map("i", "<C-j>", [[("<C-n>")]], noremap_silent_expr)
+map("i", "<C-k>", [[("<C-p>")]], noremap_silent_expr)
+
+-- Quick save.
 map("n", "<Leader>s", [[:w<CR>]], noremap_silent)
 
--- Quick exit
+-- Quick exit.
 map("n", "<Leader>q", [[:q<CR>]], noremap_silent)
 map("n", "<Leader>x", [[:close<CR>]], noremap_silent)
 
--- Emacs sol and eol.
+-- Emacs-like sol and eol.
 map("i", "<C-e>", [[<Esc>A]], noremap_silent)
 map("i", "<C-a>", [[<Esc>I]], noremap_silent)
 
--- Toggle Highlights
+-- Toggle highlights.
 map("n", "<Leader>l", [[:set hlsearch!<CR>]], noremap_silent)
 
--- Telescope
+-- Telescope keymaps.
 map("n", "<C-p>", [[:lua require("telescope.builtin").find_files()<CR>]], noremap_silent)
 map("n", "<Leader>ff", [[:lua require("telescope.builtin").find_files()<CR>]], noremap_silent)
 map("n", "<Leader>fo", [[:lua require("telescope.builtin").oldfiles()<CR>]], noremap_silent)
@@ -191,28 +179,26 @@ map("n", "<Leader>fh", [[:lua require("telescope.builtin").help_tags()<CR>]], no
 map("n", "<Leader>fm", [[:lua require("telescope").extensions.media_files.media_files()<CR>]], noremap_silent)
 map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<CR>]], noremap_silent)
 
--- Dashboard
+-- Dashboard keymaps.
 map("n", "<Leader>fn", [[:DashboardNewFile<CR>]], noremap_silent)
 map("n", "<Leader>bm", [[:DashboardJumpMarks<CR>]], noremap_silent)
 
--- nvim-tree
+-- nvim-tree keymaps.
 map("n", "`", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 map("n", "<C-n>", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 
--- comment toggle
-map("n", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
-map("v", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
+-- Toggle comments.
+map("n", "<Leader>,", [[:CommentToggle<CR>]], noremap_silent)
+map("v", "<Leader>,", [[:CommentToggle<CR>]], noremap_silent)
 
--- Neogit
-map("n", "<leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]], noremap_silent)
-map("n", "<leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
+-- Neogit keymaps.
+map("n", "<Leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]], noremap_silent)
+map("n", "<Leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
 
--- Autocommands
 
+-- AUTOCOMMANDS
 cmd "filetype plugin indent on"
-
 cmd [[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]]
-
 vim.api.nvim_exec([[
   au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0
   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif

@@ -43,7 +43,7 @@ return packer.startup(
     })
     use "onsails/lspkind-nvim"
     use "folke/lsp-trouble.nvim"
-    use "code-biscuits/nvim-biscuits"
+    -- use "code-biscuits/nvim-biscuits"
     -- use "kevinhwang91/nvim-bqf"
     -- use "sbdchd/neoformat"
     -- use "lukas-reineke/format.nvim"
