@@ -116,7 +116,7 @@ If you see a couple of symbols that look like question marks or weird characters
 
 ## Theme
 
-For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to create my own custom theme thought.
+For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to create my own custom theme though.
 
 ## Treesitter
 
@@ -130,7 +130,7 @@ For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to 
 
 ## Statuslines (galaxyline, barbar)
 
-## Quality of Life
+## Miscellaneous
 
 ### dashboard
 ### nvim-comment
@@ -147,130 +147,131 @@ For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to 
 
 ## Key-Mappings
 
-The leader key is remapped to \<Space\>.
+The leader key is remapped to `<Space>`.
 
 ### I hate escapes
 ```
-jk -> <Esc>
-jk -> <C-C>
+insert: jk -> Normal mode.
+command: jk -> Cancel command.
 ```
 
 ### Resize Windows
 ```
-<S-Right> -> :vertical resize +2<CR>
-<S-Up> -> :resize -2<CR>
-<S-Left> -> :vertical resize -2<CR>
-<S-Down> -> :resize +2<CR>
+normal: <S-Right> -> Increase width of window by 2 columns.
+normal: <S-Up> -> Increase height of window by 2 columns.
+normal: <S-Left> -> Decrease width of window by 2 columns.
+normal: <S-Down> -> Decrease height of window by 2 columns.
 ```
 
 ### Terminal
 ```
-<leader>tl -> <Cmd>vnew term://zsh <CR>
-<leader>tj -> <Cmd>split term://zsh | resize 10 <CR>
-<leader>tt -> <Cmd>tabnew | term <CR>
-<A-h> -> <C-\><C-N><C-w>h
-<A-j> -> <C-\><C-N><C-w>j
-<A-k> -> <C-\><C-N><C-w>k
-<A-l> -> <C-\><C-N><C-w>l
-<A-h> -> <C-\><C-N><C-w>h
-<A-j> -> <C-\><C-N><C-w>j
-<A-k> -> <C-\><C-N><C-w>k
-<A-l> -> <C-\><C-N><C-w>l
-<Esc> -> <C-\><C-n>
-jk -> <C-\><C-n>
+normal: <leader>tl -> Open a terminal in a new right window.
+normal: <leader>tj -> Open a terminal in a new bottom window.
+normal: <leader>tt -> Open a terminal in a new tab.
+terminal: <A-h> -> Move to left window.
+terminal: <A-j> -> Move to lower window.
+terminal: <A-k> -> Move to upper window.
+terminal: <A-l> -> Move to right window.
+insert: <A-h> -> Move to left window.
+insert: <A-j> -> Move to lower window.
+insert: <A-k> -> Move to upper window.
+insert: <A-l> -> Move to right window.
+terminal: <Esc> -> Normal mode in terminal.
+terminal: jk -> Normal mode in terminal.
 ```
 
 ### Better window navigation.
 ```
-<A-h> -> <C-w>h
-<A-j> -> <C-w>j
-<A-l> -> <C-w>l
-<A-k> -> <C-w>k
+normal: <A-h> -> Move to left window.
+normal: <A-j> -> Move to lower window.
+normal: <A-l> -> Move to upper window.
+normal: <A-k> -> Move to right window.
 ```
 
 ### Better indentation.
 ```
-< -> <gv
-> -> >gv
+visual: < -> Keep visual selection after indenting.
+visual: > -> Keep visual selection after indenting.
 ```
 
-### Tab switch buffer.
+### Switch buffer.
 ```
-<TAB> -> :BufferNext<CR>
-<S-TAB> -> :BufferPrevious<CR>
-<Leader>w -> :BufferClose<CR>
-<A-1> -> :BufferGoto 1<CR>
-<A-2> -> :BufferGoto 2<CR>
-<A-3> -> :BufferGoto 3<CR>
-<A-4> -> :BufferGoto 4<CR>
-<A-5> -> :BufferGoto 5<CR>
-<A-6> -> :BufferGoto 6<CR>
+normal: <TAB> -> Go to next Buffer.
+normal: <S-TAB> -> Go to previous Buffer.
+normal: <Leader>w -> Close Buffer.
+normal: <A-1> -> Go to first Buffer.
+normal: <A-2> -> Go to second Buffer.
+normal: <A-3> -> Go to third Buffer.
+normal: <A-4> -> Go to fourth Buffer.
+normal: <A-5> -> Go to fifth Buffer.
+normal: <A-6> -> Go to sixth Buffer.
 ```
 
 ### Move selected  line / block of text in visual mode.
 ```
-K -> :move '<-2<CR>gv-gv
-J -> :move '>+1<CR>gv-gv
-<A-u> -> :move -2<CR>==
-<A-j> -> :move +<CR>==
+select: K -> Move line up.
+select: J -> Move line down.
+normal: <A-u> -> Move line up.
+normal: <A-j> -> Move line down.
 ```
 
 ### Quick Save
 ```
-<C-s> -> :w<CR>
-<Leader>s -> :w<CR>
+normal: <C-s> -> Save.
+normal: <Leader>s -> Save.
 ```
 
 ### Quick exit
 ```
-<Leader>q -> :q<CR>
-<Leader>x -> :close<CR>
+normal: <Leader>q -> Quit.
+normal: <Leader>x -> Close.
 ```
 
 ### Emacs sol and eol.
 ```
-<C-e> -> <Esc>A
-<C-a> -> <Esc>I
+insert: <C-e> -> Go to end of line.
+insert: <C-a> -> Go to start of line.
 ```
 
-### Clear Highlights
+### Toggle Highlights
 ```
-<Leader>l -> :set hlsearch!<CR>
+normal: <Leader>l -> Toggle highlights
 ```
 
 ### Telescope
 ```
-<C-p> -> :lua require("telescope.builtin").find_files()<CR>
-<Leader>ff -> :lua require("telescope.builtin").find_files()<CR>
-<Leader>fo -> :lua require("telescope.builtin").oldfiles()<CR>
-<Leader>fw -> :lua require("telescope.builtin").live_grep()<CR>
-<Leader>fb -> :lua require("telescope.builtin").buffers()<CR>
-<Leader>fh -> :lua require("telescope.builtin").help_tags()<CR>
-<Leader>fm -> :lua require("telescope").extensions.media_files.media_files()<CR>
-<Leader>fp -> :lua require("telescope").extensions.project.project{}<CR>
+normal: <C-p> -> Find files in telescope.
+normal: <Leader>ff -> Find files in telescope.
+normal: <Leader>fo -> Find old files in telescope.
+normal: <Leader>fw -> Grep in telescope.
+normal: <Leader>fb -> Find buffer in telescope.
+normal: <Leader>fh -> Find help tags in telescope.
+normal: <Leader>fm -> Find media files in telescope.
+normal: <Leader>fp -> Find project in telescope.
 ```
 
 ### Dashboard
 ```
-<Leader>fn -> :DashboardNewFile<CR>
-<Leader>bm -> :DashboardJumpMarks<CR>
+normal: <Leader>fn -> New file in Dashboard.
+normal: <Leader>bm -> Dashboard jumpmarks.
 ```
 
-### nvim tree.lua
+### nvim-tree.lua
 ```
-\` -> :lua require("togglenvimtree").toggle()<CR>
-<C-n> -> :lua require("togglenvimtree").toggle()<CR>
+normal: ` -> Toggle nvim-tree.
+normal: <C-n> -> Toggle nvim-tree.
 ```
 
 ### comment toggle
 ```
-<leader>, -> :CommentToggle<CR>
+normal: <leader>, -> Toggle Comment.
+visual: <leader>, -> Toggle Comment.
 ```
 
-### NeoGit
+### Neogit
 ```
-<leader>gg -> :lua require("neogit").open({ kind = "vsplit" })<CR>
-<leader>gc -> :lua require("neogit").open({ "commit" })<CR>
+normal: <leader>gg -> Open Neogit window.
+normal: <leader>gc -> Open Neogit commit window.
 ```
 
 ## Inspired by

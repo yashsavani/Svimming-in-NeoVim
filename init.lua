@@ -120,9 +120,9 @@ map("n", "<S-Left>", [[:vertical resize -2<CR>]], noremap_silent)
 map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 
 -- Terminal
-map("n", "<leader>tl", [[<Cmd>vnew term://zsh <CR>]], noremap_silent) -- term over right
-map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10 <CR>]], noremap_silent) --  term bottom
-map("n", "<leader>tt", [[<Cmd>tabnew | term <CR>]], noremap_silent) -- term new tab
+map("n", "<leader>tl", [[<Cmd>vnew term://zsh<CR>]], noremap_silent) -- term over right
+map("n", "<leader>tj", [[<Cmd>split term://zsh | resize 10<CR>]], noremap_silent) --  term bottom
+map("n", "<leader>tt", [[<Cmd>tabnew | term<CR>]], noremap_silent) -- term new tab
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
 map("t", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
 map("t", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
@@ -148,7 +148,7 @@ map("v", ">", [[>gv]], noremap_silent)
 -- map("n", "<C-]>", [[>>]], noremap_silent)
 -- map("n", "<C-[>", [[<<]], noremap_silent)
 
--- Tab switch buffer.
+-- Switch buffer.
 map("n", "<TAB>", [[:BufferNext<CR>]], noremap_silent) -- TAB in normal mode will move to the next buffer.
 map("n", "<S-TAB>", [[:BufferPrevious<CR>]], noremap_silent) -- SHIFT + TAB in normal mode will move to prev buffer.
 map("n", "<Leader>w", [[:BufferClose<CR>]], noremap_silent)
@@ -178,7 +178,7 @@ map("n", "<Leader>x", [[:close<CR>]], noremap_silent)
 map("i", "<C-e>", [[<Esc>A]], noremap_silent)
 map("i", "<C-a>", [[<Esc>I]], noremap_silent)
 
--- Clear Highlights
+-- Toggle Highlights
 map("n", "<Leader>l", [[:set hlsearch!<CR>]], noremap_silent)
 
 -- Telescope
@@ -195,7 +195,7 @@ map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<
 map("n", "<Leader>fn", [[:DashboardNewFile<CR>]], noremap_silent)
 map("n", "<Leader>bm", [[:DashboardJumpMarks<CR>]], noremap_silent)
 
--- nvim tree.lua
+-- nvim-tree
 map("n", "`", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 map("n", "<C-n>", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silent)
 
@@ -203,11 +203,11 @@ map("n", "<C-n>", [[:lua require("togglenvimtree").toggle()<CR>]], noremap_silen
 map("n", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
 map("v", "<leader>,", [[:CommentToggle<CR>]], noremap_silent)
 
--- NeoGit
+-- Neogit
 map("n", "<leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]], noremap_silent)
 map("n", "<leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
 
--- AUTOCOMMANDS
+-- Autocommands
 
 cmd "filetype plugin indent on"
 
