@@ -140,8 +140,8 @@ For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to 
 
 ### I hate escapes
 ```
-  jk -> <Esc>
-  jk -> <C-C>
+jk -> <Esc>
+jk -> <C-C>
 ```
 
 ### Resize Windows
@@ -154,112 +154,112 @@ For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to 
 
 ### Terminal
 ```
-  <leader>tl -> <Cmd>vnew term://zsh <CR>
-  <leader>tj -> <Cmd>split term://zsh | resize 10 <CR>
-  <leader>tt -> <Cmd>tabnew | term <CR>
-  <A-h> -> <C-\><C-N><C-w>h
-  <A-j> -> <C-\><C-N><C-w>j
-  <A-k> -> <C-\><C-N><C-w>k
-  <A-l> -> <C-\><C-N><C-w>l
-  <A-h> -> <C-\><C-N><C-w>h
-  <A-j> -> <C-\><C-N><C-w>j
-  <A-k> -> <C-\><C-N><C-w>k
-  <A-l> -> <C-\><C-N><C-w>l
-  <Esc> -> <C-\><C-n>
-  jk -> <C-\><C-n>
+<leader>tl -> <Cmd>vnew term://zsh <CR>
+<leader>tj -> <Cmd>split term://zsh | resize 10 <CR>
+<leader>tt -> <Cmd>tabnew | term <CR>
+<A-h> -> <C-\><C-N><C-w>h
+<A-j> -> <C-\><C-N><C-w>j
+<A-k> -> <C-\><C-N><C-w>k
+<A-l> -> <C-\><C-N><C-w>l
+<A-h> -> <C-\><C-N><C-w>h
+<A-j> -> <C-\><C-N><C-w>j
+<A-k> -> <C-\><C-N><C-w>k
+<A-l> -> <C-\><C-N><C-w>l
+<Esc> -> <C-\><C-n>
+jk -> <C-\><C-n>
 ```
 
 ### Better window navigation.
 ```
-  <A-h> -> <C-w>h
-  <A-j> -> <C-w>j
-  <A-l> -> <C-w>l
-  <A-k> -> <C-w>k
+<A-h> -> <C-w>h
+<A-j> -> <C-w>j
+<A-l> -> <C-w>l
+<A-k> -> <C-w>k
 ```
 
 ### Better indentation.
 ```
-  < -> <gv
-  > -> >gv
+< -> <gv
+> -> >gv
 ```
 
 ### Tab switch buffer.
 ```
-  <TAB> -> :BufferNext<CR>
-  <S-TAB> -> :BufferPrevious<CR>
-  <Leader>w -> :BufferClose<CR>
-  <A-1> -> :BufferGoto 1<CR>
-  <A-2> -> :BufferGoto 2<CR>
-  <A-3> -> :BufferGoto 3<CR>
-  <A-4> -> :BufferGoto 4<CR>
-  <A-5> -> :BufferGoto 5<CR>
-  <A-6> -> :BufferGoto 6<CR>
+<TAB> -> :BufferNext<CR>
+<S-TAB> -> :BufferPrevious<CR>
+<Leader>w -> :BufferClose<CR>
+<A-1> -> :BufferGoto 1<CR>
+<A-2> -> :BufferGoto 2<CR>
+<A-3> -> :BufferGoto 3<CR>
+<A-4> -> :BufferGoto 4<CR>
+<A-5> -> :BufferGoto 5<CR>
+<A-6> -> :BufferGoto 6<CR>
 ```
 
 ### Move selected  line / block of text in visual mode.
 ```
-  K -> :move '<-2<CR>gv-gv
-  J -> :move '>+1<CR>gv-gv
-  <A-u> -> :move -2<CR>==
-  <A-j> -> :move +<CR>==
+K -> :move '<-2<CR>gv-gv
+J -> :move '>+1<CR>gv-gv
+<A-u> -> :move -2<CR>==
+<A-j> -> :move +<CR>==
 ```
 
 ### Quick Save
 ```
-  <C-s> -> :w<CR>
-  <Leader>s -> :w<CR>
+<C-s> -> :w<CR>
+<Leader>s -> :w<CR>
 ```
 
 ### Quick exit
 ```
-  <Leader>q -> :q<CR>
-  <Leader>x -> :close<CR>
+<Leader>q -> :q<CR>
+<Leader>x -> :close<CR>
 ```
 
 ### Emacs sol and eol.
 ```
-  <C-e> -> <Esc>A
-  <C-a> -> <Esc>I
+<C-e> -> <Esc>A
+<C-a> -> <Esc>I
 ```
 
 ### Clear Highlights
 ```
-  <Leader>l -> :set hlsearch!<CR>
+<Leader>l -> :set hlsearch!<CR>
 ```
 
 ### Telescope
 ```
-  <C-p> -> :lua require("telescope.builtin").find_files()<CR>
-  <Leader>ff -> :lua require("telescope.builtin").find_files()<CR>
-  <Leader>fo -> :lua require("telescope.builtin").oldfiles()<CR>
-  <Leader>fw -> :lua require("telescope.builtin").live_grep()<CR>
-  <Leader>fb -> :lua require("telescope.builtin").buffers()<CR>
-  <Leader>fh -> :lua require("telescope.builtin").help_tags()<CR>
-  <Leader>fm -> :lua require("telescope").extensions.media_files.media_files()<CR>
-  <Leader>fp -> :lua require("telescope").extensions.project.project{}<CR>
+<C-p> -> :lua require("telescope.builtin").find_files()<CR>
+<Leader>ff -> :lua require("telescope.builtin").find_files()<CR>
+<Leader>fo -> :lua require("telescope.builtin").oldfiles()<CR>
+<Leader>fw -> :lua require("telescope.builtin").live_grep()<CR>
+<Leader>fb -> :lua require("telescope.builtin").buffers()<CR>
+<Leader>fh -> :lua require("telescope.builtin").help_tags()<CR>
+<Leader>fm -> :lua require("telescope").extensions.media_files.media_files()<CR>
+<Leader>fp -> :lua require("telescope").extensions.project.project{}<CR>
 ```
 
 ### Dashboard
 ```
-  <Leader>fn -> :DashboardNewFile<CR>
-  <Leader>bm -> :DashboardJumpMarks<CR>
+<Leader>fn -> :DashboardNewFile<CR>
+<Leader>bm -> :DashboardJumpMarks<CR>
 ```
 
 ### nvim tree.lua
 ```
-  \` -> :lua require("togglenvimtree").toggle()<CR>
-  <C-n> -> :lua require("togglenvimtree").toggle()<CR>
+\` -> :lua require("togglenvimtree").toggle()<CR>
+<C-n> -> :lua require("togglenvimtree").toggle()<CR>
 ```
 
 ### comment toggle
 ```
-  <leader>, -> :CommentToggle<CR>
+<leader>, -> :CommentToggle<CR>
 ```
 
 ### NeoGit
 ```
-  <leader>gg -> :lua require("neogit").open({ kind = "vsplit" })<CR>
-  <leader>gc -> :lua require("neogit").open({ "commit" })<CR>
+<leader>gg -> :lua require("neogit").open({ kind = "vsplit" })<CR>
+<leader>gc -> :lua require("neogit").open({ "commit" })<CR>
 ```
 
 ## Inspired by
