@@ -20,49 +20,37 @@ return packer.startup(
     use "navarasu/onedark.nvim"
     use "sainnhe/gruvbox-material"
     use "rafamadriz/neon"
+    use "kyazdani42/nvim-web-devicons"
 
     -- Tree-Sitter
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      requires = {
-        "windwp/nvim-ts-autotag",
-        "andymass/vim-matchup",
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        "p00f/nvim-ts-rainbow",
-      }
     })
+    use "windwp/nvim-ts-autotag"
+    use "andymass/vim-matchup"
+    use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "p00f/nvim-ts-rainbow"
 
     -- Language Server
     use ({
       "neovim/nvim-lspconfig",
       requires = { "kabouzeid/nvim-lspinstall", "glepnir/lspsaga.nvim" }
     })
-    use {
+    use ({
       "ahmedkhalf/lsp-rooter.nvim",
-      config = function()
-        require("lsp-rooter").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-      end
-    }
-    use "onsails/lspkind-nvim"
-    use({
-      "folke/lsp-trouble.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      config = function() require("lsp-rooter").setup{} end
     })
+    use "onsails/lspkind-nvim"
+    use "folke/lsp-trouble.nvim"
     use "code-biscuits/nvim-biscuits"
     -- use "kevinhwang91/nvim-bqf"
     -- use "sbdchd/neoformat"
     -- use "lukas-reineke/format.nvim"
 
     -- Autocomplete
-    use {
-      "hrsh7th/nvim-compe",
-      requires = { "hrsh7th/vim-vsnip" }
-    }
+    use "hrsh7th/vim-vsnip"
+    use "hrsh7th/nvim-compe"
 
     -- Telescope
     use({
@@ -70,17 +58,14 @@ return packer.startup(
       requires = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-fzy-native.nvim",
-        "nvim-telescope/telescope-media-files.nvim",
-        "nvim-telescope/telescope-project.nvim",
       },
     })
+    use "nvim-telescope/telescope-fzy-native.nvim"
+    use "nvim-telescope/telescope-media-files.nvim"
+    use "nvim-telescope/telescope-project.nvim"
 
     -- Explorer
-    use({
-      "kyazdani42/nvim-tree.lua",
-      requires = { "kyazdani42/nvim-web-devicons" }
-    })
+    use "kyazdani42/nvim-tree.lua"
 
     -- Git
     use({
@@ -108,13 +93,9 @@ return packer.startup(
     -- Statuslines
     use({
       "glepnir/galaxyline.nvim",
-      branch = "main",
-      requires = { "kyazdani42/nvim-web-devicons" }
+      branch = "main"
     })
-    use({
-      "romgrk/barbar.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-    })
+    use "romgrk/barbar.nvim"
 
   end,
   {
