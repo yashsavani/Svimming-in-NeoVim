@@ -7,6 +7,7 @@ npairs.setup({
     lua = {'string'},-- it will not add pair on that treesitter node
     javascript = {'template_string'},
     java = false,-- don't check treesitter on java
+    ignored_next_char = "[%w%.]",
   }
 })
 
@@ -26,7 +27,7 @@ MUtils.completion_confirm=function()
   end
 end
 
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+remap("i" ,"<CR>", [[v:lua.MUtils.completion_confirm()]], {expr = true , noremap = true})
 
 local endwise = require('nvim-autopairs.ts-rule').endwise
 

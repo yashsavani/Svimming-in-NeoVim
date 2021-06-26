@@ -6,3 +6,9 @@ require("neoscroll").setup({
     respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
     cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
 })
+
+require("neoscroll.config").set_mappings({
+  ["<C-u>"] = {"scroll", {"-vim.wo.scroll", "true", "200"}},
+  ["<C-d>"] = {"scroll", { "vim.wo.scroll", "true", "200"}}
+})
+

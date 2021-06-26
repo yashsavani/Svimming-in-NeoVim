@@ -116,7 +116,7 @@ If you see a couple of symbols that look like question marks or weird characters
 
 ## Theme
 
-For now I am using the onedark.nvim theeme by navarasu. Eventually I do want to create my own custom theme though.
+For now I am using the onedark.nvim theme by navarasu. Eventually I do want to create my own custom theme though.
 
 ## Treesitter
 

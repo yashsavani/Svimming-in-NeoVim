@@ -113,22 +113,22 @@ map("n", "<S-Down>", [[:resize +2<CR>]], noremap_silent)
 map("n", "<Leader>tl", [[<Cmd>vnew term://zsh<CR>]], noremap_silent) -- term over right
 map("n", "<Leader>tj", [[<Cmd>split term://zsh | resize 10<CR>]], noremap_silent) --  term bottom
 map("n", "<Leader>tt", [[<Cmd>tabnew | term<CR>]], noremap_silent) -- term new tab
-map("t", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
-map("t", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
-map("t", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
-map("t", "<A-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
-map("i", "<A-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
-map("i", "<A-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
-map("i", "<A-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
-map("i", "<A-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("t", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("t", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("t", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("t", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
+map("i", "<C-h>", [[<C-\><C-N><C-w>h]], noremap_silent)
+map("i", "<C-j>", [[<C-\><C-N><C-w>j]], noremap_silent)
+map("i", "<C-k>", [[<C-\><C-N><C-w>k]], noremap_silent)
+map("i", "<C-l>", [[<C-\><C-N><C-w>l]], noremap_silent)
 map("t", "<Esc>", [[<C-\><C-n>]], noremap_silent)
 map("t", "jk", [[<C-\><C-n>]], noremap_silent)
 
 -- Better window navigation.
-map("n", "<A-h>", [[<C-w>h]], noremap_silent)
-map("n", "<A-j>", [[<C-w>j]], noremap_silent)
-map("n", "<A-l>", [[<C-w>l]], noremap_silent)
-map("n", "<A-k>", [[<C-w>k]], noremap_silent)
+map("n", "<C-h>", [[<C-w>h]], noremap_silent)
+map("n", "<C-j>", [[<C-w>j]], noremap_silent)
+map("n", "<C-l>", [[<C-w>l]], noremap_silent)
+map("n", "<C-k>", [[<C-w>k]], noremap_silent)
 
 -- Better indentation.
 map("v", "<", [[<gv]], noremap_silent)
@@ -178,6 +178,11 @@ map("n", "<Leader>fb", [[:lua require("telescope.builtin").buffers()<CR>]], nore
 map("n", "<Leader>fh", [[:lua require("telescope.builtin").help_tags()<CR>]], noremap_silent)
 map("n", "<Leader>fm", [[:lua require("telescope").extensions.media_files.media_files()<CR>]], noremap_silent)
 map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<CR>]], noremap_silent)
+
+-- Compe keymaps.
+map("i", "<C-space>", [[compe#complete()]], { expr = true, silent = true })
+map("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], { expr = true, silent = true })
+map("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<S-Tab>"]], { expr = true, silent = true })
 
 -- Dashboard keymaps.
 map("n", "<Leader>fn", [[:DashboardNewFile<CR>]], noremap_silent)

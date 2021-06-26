@@ -1,9 +1,6 @@
-
-local keymap = vim.api.nvim_set_keymap
-
 require("compe").setup({
     enabled = true,
-    autocomplete = true,
+    autocomplete = false,
     debug = false,
     min_length = 1,
     preselect = "enable",
@@ -30,21 +27,5 @@ require("compe").setup({
       -- treesitter = {kind = "  "},
       emoji = { kind = " ﲃ  (Emoji)", filetypes={"markdown", "text"} }
       -- for emoji press : (idk if that in compe tho)
-
-      -- path = true,
-      -- buffer = true,
-      -- calc = true,
-      -- vsnip = true,
-      -- nvim_lsp = true,
-      -- nvim_lua = true,
-      -- spell = false,
-      -- tags = false,
-      -- snippets_nvim = false,
-      -- treesitter = false,
     },
 })
-
-keymap("i", "<C-space>", "compe#complete()", { expr = true, silent = true })
-keymap("i", "<CR>", "v:lua.completions()", { expr = true, silent = true })
-keymap("i", "<Tab>", 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true, silent = true })
-keymap("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true, silent = true })
