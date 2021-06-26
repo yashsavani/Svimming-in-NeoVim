@@ -1,4 +1,5 @@
 local npairs = require("nvim-autopairs")
+local Rule = require('nvim-autopairs.rule')
 local remap = vim.api.nvim_set_keymap
 
 npairs.setup({
@@ -9,6 +10,12 @@ npairs.setup({
     java = false,-- don't check treesitter on java
     ignored_next_char = "[%w%.]",
   }
+})
+
+npairs.add_rules({
+  Rule("( ", " "),
+  Rule("[ ", " "),
+  Rule("{ ", " ")
 })
 
 -- skip it, if you use another global object
@@ -27,7 +34,7 @@ MUtils.completion_confirm=function()
   end
 end
 
-remap("i" ,"<CR>", [[v:lua.MUtils.completion_confirm()]], {expr = true , noremap = true})
+remap("i", "<CR>", [[v:lua.MUtils.completion_confirm()]], {expr = true , noremap = true})
 
 local endwise = require('nvim-autopairs.ts-rule').endwise
 
