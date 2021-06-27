@@ -248,10 +248,18 @@ map("n", "<Leader>gk", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_sil
 
 -- AUTOCOMMANDS
 cmd "filetype plugin indent on"
-cmd [[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]]
 vim.api.nvim_exec([[
   au BufEnter term://* setlocal nonumber | setlocal norelativenumber | set laststatus=0
   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
   au BufEnter {} if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
   au BufRead,BufNewFile *.lua set formatoptions-=cro
+  au Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+  au FileType markdown setlocal spell
+  au FileType gitcommit setlocal spell
+  au Filetype markdown setlocal com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:-,b:1. | set formatoptions=tcroqln
+  augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType text         call pencil#init()
+  augroup END
 ]], false)

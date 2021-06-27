@@ -52,6 +52,7 @@ return packer.startup(
     -- Autocomplete
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/nvim-compe"
+    use "rafamadriz/friendly-snippets"
 
     -- Telescope
     use({
@@ -96,6 +97,12 @@ return packer.startup(
       "folke/todo-comments.nvim",
       requires = "nvim-lua/plenary.nvim",
       config = function() require("todo-comments").setup() end
+    }
+    use "preservim/vim-pencil"
+    use "tpope/vim-abolish"
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
     }
 
     -- Statuslines
