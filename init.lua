@@ -43,8 +43,9 @@ cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
 
 -- Theme
-require("onedark").setup()
-vim.g.onedark_style = "warm"
+-- require("onedark").setup()
+-- vim.g.onedark_style = "warm"
+cmd "colorscheme sonokai"
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
@@ -204,6 +205,7 @@ map("v", "<Leader>,", [[:CommentToggle<CR>]], noremap_silent)
 
 -- Diagnostic keymaps.
 map("n", "<Leader>dt", [[:TroubleToggle<CR>]], noremap_silent)
+map("n", "<Leader>do", [[:TodoTrouble<CR>]], noremap_silent)
 map("n", "<Leader>dw", [[:TroubleToggle lsp_workspace_diagnostics<CR>]], noremap_silent)
 map("n", "<Leader>dd", [[:TroubleToggle lsp_document_diagnostics<CR>]], noremap_silent)
 map("n", "<Leader>dq", [[:TroubleToggle quickfix<CR>]], noremap_silent)
@@ -211,6 +213,7 @@ map("n", "<Leader>dl", [[:TroubleToggle loclist<CR>]], noremap_silent)
 map("n", "<Leader>dr", [[:TroubleToggle lsp_references<CR>]], noremap_silent)
 map("n", "<Leader>dx", [[:cclose<CR>]], noremap_silent)
 map("n", "gR", [[:TroubleToggle lsp_references<CR>]], noremap_silent)
+map("n", "<Leader>dot", [[:TodoTelescope<CR>]], noremap_silent)
 
 map("n", "<Leader>e", [[:lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>]], noremap_silent)
 map("n", "[e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]], noremap_silent)

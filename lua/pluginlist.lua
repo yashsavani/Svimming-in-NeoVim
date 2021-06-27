@@ -17,6 +17,7 @@ return packer.startup(
     use "wbthomason/packer.nvim"
 
     -- Themes
+    use "sainnhe/sonokai"
     use "navarasu/onedark.nvim"
     use "sainnhe/gruvbox-material"
     use "rafamadriz/neon"
@@ -88,7 +89,14 @@ return packer.startup(
     use "glepnir/dashboard-nvim"
     use {"RRethy/vim-hexokinase", run = "make hexokinase"}
     use "RRethy/vim-illuminate"
-    use { "lewis6991/spellsitter.nvim", config = function() require('spellsitter').setup() end}
+    use { "lewis6991/spellsitter.nvim", config = function() require('spellsitter').setup() end }
+    use "ray-x/lsp_signature.nvim"
+    use { "nacro90/numb.nvim", config = function() require('numb').setup() end }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function() require("todo-comments").setup() end
+    }
 
     -- Statuslines
     use({

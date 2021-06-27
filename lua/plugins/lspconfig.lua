@@ -1,4 +1,6 @@
 local on_attach = function(client, bufnum)
+  require "lsp_signature".on_attach()
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnum, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnum, ...) end
   local noremap_silent = { noremap = true, silent = true }
