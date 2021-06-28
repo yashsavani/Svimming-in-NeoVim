@@ -279,6 +279,12 @@ normal: <Leader>gg -> Open Neogit window.
 normal: <Leader>gc -> Open Neogit commit window.
 ```
 
+## Todos
+
+- [] Complete linter (flake8) and formatter (black) integration with native LSP.
+- [] Configure statusbar themes to match overall theme.
+- [] Add screenshots to README.md and edit text.
+
 ## Inspired by
 
 - https://github.com/mnabila/nvimrc
