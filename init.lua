@@ -183,8 +183,8 @@ map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<
 
 -- Compe keymaps.
 map("i", "<C-space>", [[compe#complete()]], { expr = true, silent = true })
-map("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], { expr = true, silent = true })
-map("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<S-Tab>"]], { expr = true, silent = true })
+-- map("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], { expr = true, silent = true })
+-- map("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<S-Tab>"]], { expr = true, silent = true })
 
 -- Better nav for autocomplete.
 map("i", "<C-j>", [[("<C-n>")]], noremap_silent_expr)
