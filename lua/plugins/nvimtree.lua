@@ -8,16 +8,24 @@ vim.g.nvim_tree_root_folder_modifier = ":t"
 vim.g.nvim_tree_tab_open = 0
 vim.g.nvim_tree_width_allow_resize = 1
 -- vim.g.nvim_tree_auto_ignore_ft = 'startify' --empty by default, don't auto open tree on specific filetypes.
-vim.g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
+vim.g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1 }
 
 vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = { unstaged = "✗", staged = "✓", unmerged = "", renamed = "➜", untracked = "★", deleted = "", ignored = "◌" },
-    folder = {default = "", open = "", empty = "", empty_open = "", symlink = ""}
+  default = "",
+  symlink = "",
+  git = {
+    unstaged = "✗",
+    staged = "✓",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "★",
+    deleted = "",
+    ignored = "◌",
+  },
+  folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" },
 }
 
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+local tree_cb = require"nvim-tree.config".nvim_tree_callback
 vim.g.nvim_tree_bindings = {
   -- ["<CR>"] = ":YourVimFunction()<cr>",
   -- ["u"] = ":lua require'some_module'.some_function()<cr>",

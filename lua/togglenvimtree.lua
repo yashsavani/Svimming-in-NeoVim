@@ -6,17 +6,17 @@ local bfstate = require("bufferline.state")
 local M = {}
 
 function M.toggle()
-    if view.win_open() then
-        bfstate.set_offset(0)
-        view.close()
+  if view.win_open() then
+    bfstate.set_offset(0)
+    view.close()
+  else
+    bfstate.set_offset(vim.g.nvim_tree_width)
+    if vim.g.nvim_tree_follow == 1 then
+      tree.find_file(true)
     else
-        bfstate.set_offset(vim.g.nvim_tree_width)
-        if vim.g.nvim_tree_follow == 1 then
-            tree.find_file(true)
-        else
-            lib.open()
-        end
+      lib.open()
     end
+  end
 end
 
 return M

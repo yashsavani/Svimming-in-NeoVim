@@ -3,13 +3,12 @@ local execute = vim.api.nvim_command
 local fn = vim.fn
 
 -- PACKER BOOTSTRAP
-local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
+  fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
   execute "packadd packer.nvim"
 end
-
 
 -- PLUGIN CONFIGURATION
 require("pluginlist")
@@ -34,7 +33,6 @@ require("plugins.hexokinase")
 require("plugins.galaxyline")
 require("plugins.barbar")
 
-
 -- SETTINGS
 vim.g.mapleader = " "
 vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
@@ -47,12 +45,10 @@ cmd "syntax enable" -- Enable syntax highlighting.
 -- vim.g.onedark_style = "warm"
 cmd "colorscheme sonokai"
 
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 local function opt(scope, key, value)
   scopes[scope][key] = value
-  if scope ~= "o" then
-    scopes["o"][key] = value
-  end
+  if scope ~= "o" then scopes["o"][key] = value end
 end
 
 opt("o", "encoding", "utf-8") -- Set encoding.
@@ -95,13 +91,12 @@ opt("o", "timeoutlen", 500) -- Default is much longer at 1000ms.
 opt("o", "background", "dark") -- Dark Background
 opt("o", "completeopt", "menu,menuone,noselect") -- To allow compe
 
-vim.o.shortmess = vim.o.shortmess.."c"
+vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.formatoptions = vim.o.formatoptions:gsub("cro", "") -- Stop extending comments
 
-
 -- KEY-MAPPINGS
-local noremap_silent = {noremap = true, silent = true}
-local noremap_silent_expr = {noremap = true, silent = true, expr = true}
+local noremap_silent = { noremap = true, silent = true }
+local noremap_silent_expr = { noremap = true, silent = true, expr = true }
 local map = vim.api.nvim_set_keymap
 
 -- Better escapes.
@@ -178,8 +173,10 @@ map("n", "<Leader>fg", [[:lua require("telescope.builtin").live_grep()<CR>]], no
 map("n", "<Leader>fb", [[:lua require("telescope.builtin").buffers()<CR>]], noremap_silent)
 map("n", "<Leader>fh", [[:lua require("telescope.builtin").help_tags()<CR>]], noremap_silent)
 map("n", "<Leader>fm", [[:lua require("telescope.builtin").man_pages()<CR>]], noremap_silent)
-map("n", "<Leader>fM", [[:lua require("telescope").extensions.media_files.media_files()<CR>]], noremap_silent)
-map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<CR>]], noremap_silent)
+map("n", "<Leader>fM", [[:lua require("telescope").extensions.media_files.media_files()<CR>]],
+    noremap_silent)
+map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<CR>]],
+    noremap_silent)
 
 -- Compe keymaps.
 map("i", "<C-space>", [[compe#complete()]], { expr = true, silent = true })
@@ -215,13 +212,15 @@ map("n", "<Leader>dx", [[:cclose<CR>]], noremap_silent)
 map("n", "gR", [[:TroubleToggle lsp_references<CR>]], noremap_silent)
 map("n", "<Leader>dot", [[:TodoTelescope<CR>]], noremap_silent)
 
-map("n", "<Leader>e", [[:lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>]], noremap_silent)
+map("n", "<Leader>e", [[:lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>]],
+    noremap_silent)
 map("n", "[e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]], noremap_silent)
 map("n", "]e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]], noremap_silent)
 
 -- LSP keymaps.
 map("n", "<Leader>la", [[:lua require("lspsaga.codeaction").code_action()<CR>]], noremap_silent)
-map("v", "<Leader>la", [[:<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>]], noremap_silent)
+map("v", "<Leader>la", [[:<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>]],
+    noremap_silent)
 map("n", "<Leader>ld", [[:Telescope lsp_document_diagnostics<CR>]], noremap_silent)
 map("n", "<Leader>lw", [[:Telescope lsp_workspace_diagnostics<CR>]], noremap_silent)
 map("n", "<Leader>lf", [[:lua vim.lsp.buf.formatting()<CR>]], noremap_silent)
@@ -236,7 +235,9 @@ map("n", "<Leader>lx", [[:cclose<CR>]], noremap_silent)
 map("n", "<Leader>lsd", [[:Telescope lsp_document_symbols<CR>]], noremap_silent)
 map("n", "<Leader>lsw", [[:Telescope lsp_dynamic_workspace_symbols<CR>]], noremap_silent)
 
-if vim.bo.ft ~= "vim" then map("n", "K", [[:lua require("lspsaga.hover").render_hover_doc()<CR>]], noremap_silent) end
+if vim.bo.ft ~= "vim" then
+  map("n", "K", [[:lua require("lspsaga.hover").render_hover_doc()<CR>]], noremap_silent)
+end
 map("n", "<C-k>", [[:lua require("lspsaga.signaturehelp").signature_help()<CR>]], noremap_silent)
 
 -- Neogit keymaps.
@@ -244,7 +245,6 @@ map("n", "<Leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]],
 map("n", "<Leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
 map("n", "<Leader>gj", [[:lua require("gitsigns").next_hunk()<CR>]], noremap_silent)
 map("n", "<Leader>gk", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_silent)
-
 
 -- AUTOCOMMANDS
 cmd "filetype plugin indent on"
