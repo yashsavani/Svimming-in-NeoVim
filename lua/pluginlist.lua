@@ -86,7 +86,7 @@ return packer.startup(
     use "folke/which-key.nvim"
     use "machakann/vim-sandwich"
     use "ggandor/lightspeed.nvim"
-    use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+    use "lukas-reineke/indent-blankline.nvim"
     use "glepnir/dashboard-nvim"
     use {"RRethy/vim-hexokinase", run = "make hexokinase"}
     use "RRethy/vim-illuminate"
