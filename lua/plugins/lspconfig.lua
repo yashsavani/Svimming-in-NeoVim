@@ -131,14 +131,30 @@ setup_servers()
 
 require"lspconfig".efm.setup {
   init_options = { documentFormatting = true },
-  filetypes = { "lua" },
+  filetypes = { "lua", "python", "markdown" },
   settings = {
     rootMarkers = { ".git/" },
     languages = {
       lua = {
         {
-          formatCommand = "lua-format -i ${--tab-width:tabSize} ${--indent-width:tabSize} ${--continuation-indent-width:tabSize} --spaces-inside-table-braces --single-quote-to-double-quote --chop-down-parameter --chop-down-table --chop-down-kv-table --extra-sep-at-table-end --column-limit=100",
+          formatCommand = "lua-format -i ${--tab-width:blacktabSize} ${--indent-width:tabSize} ${--continuation-indent-width:tabSize} --spaces-inside-table-braces --single-quote-to-double-quote --chop-down-parameter --chop-down-table --chop-down-kv-table --extra-sep-at-table-end --column-limit=100",
           formatStdin = true,
+        },
+      },
+      python = {
+        {
+          lintCommand = "flake8 --ignore=E501 --std-display-name ${INPUT} -",
+          lintStdin = true,
+          lintFormats = { "%f:%l:%c: %m" },
+        },
+        { formatCommand = "black --quiet -", formatStdin = true },
+        { formatCommand = "isort --quiet -", formatStdin = true },
+      },
+      markdown = {
+        {
+          lintCommand = "markdownlint -s",
+          lintStdin = true,
+          lintFormats = { "%f:%l %m", "%f:%l:%c %m", "%f: %l: %m" },
         },
       },
     },
