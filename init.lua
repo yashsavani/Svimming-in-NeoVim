@@ -43,6 +43,9 @@ cmd "syntax enable" -- Enable syntax highlighting.
 -- Theme
 -- require("onedark").setup()
 -- vim.g.onedark_style = "warm"
+vim.g.sonokai_style = "andromeda"
+vim.g.sonokai_enable_italic = 1
+vim.g.sonokai_transparent_background = 1
 cmd "colorscheme sonokai"
 
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
