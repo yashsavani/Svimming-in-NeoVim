@@ -1,6 +1,8 @@
-# Svimming in Neovim.
+# Svimming in Neovim
 
 A beautiful and fast Neovim config written in Lua.
+
+![Screenshot](assets/screenshot.png "screenshot")
 
 ## Introduction
 
@@ -90,7 +92,7 @@ This is definitely subject to change, but for now the structure is relatively si
 3. A key-mappings section where the keymaps are defined.
 4. An autocommands section where the autocommands for filetype specific settings are located.
 
-The `CasKa_NF` directory contains a NerdFont patched version of the Cascadia Code font by Microsoft (https://github.com/microsoft/cascadia-code). The patched version contains all the icons used by the editor to make it more aesthetically appealing.
+The `assets/CasKa_NF` directory contains a NerdFont patched version of the Cascadia Code font by Microsoft (https://github.com/microsoft/cascadia-code). The patched version contains all the icons used by the editor to make it more aesthetically appealing.
 
 The `lua` directory contains all the more specific pieces of configuration code.
 
@@ -116,7 +118,7 @@ If you see a couple of symbols that look like question marks or weird characters
 
 ## Theme
 
-For now I am using the onedark.nvim theme by navarasu. Eventually I do want to create my own custom theme though.
+For now I have elected to go with the gruvbox-flat theme, however this is subject to change in the future.
 
 ## Treesitter
 
@@ -168,24 +170,24 @@ normal: <S-Down> -> Decrease height of window by 2 columns.
 normal: <Leader>tl -> Open a terminal in a new right window.
 normal: <Leader>tj -> Open a terminal in a new bottom window.
 normal: <Leader>tt -> Open a terminal in a new tab.
-terminal: <A-h> -> Move to left window.
-terminal: <A-j> -> Move to lower window.
-terminal: <A-k> -> Move to upper window.
-terminal: <A-l> -> Move to right window.
-insert: <A-h> -> Move to left window.
-insert: <A-j> -> Move to lower window.
-insert: <A-k> -> Move to upper window.
-insert: <A-l> -> Move to right window.
+terminal: <C-h> -> Move to left window.
+terminal: <C-j> -> Move to lower window.
+terminal: <C-k> -> Move to upper window.
+terminal: <C-l> -> Move to right window.
+insert: <C-h> -> Move to left window.
+insert: <C-j> -> Move to lower window.
+insert: <C-k> -> Move to upper window.
+insert: <C-l> -> Move to right window.
 terminal: <Esc> -> Normal mode in terminal.
 terminal: jk -> Normal mode in terminal.
 ```
 
 ### Better window navigation.
 ```
-normal: <A-h> -> Move to left window.
-normal: <A-j> -> Move to lower window.
-normal: <A-l> -> Move to upper window.
-normal: <A-k> -> Move to right window.
+normal: <C-h> -> Move to left window.
+normal: <C-j> -> Move to lower window.
+normal: <C-l> -> Move to upper window.
+normal: <C-k> -> Move to right window.
 ```
 
 ### Better indentation.
@@ -196,8 +198,8 @@ visual: > -> Keep visual selection after indenting.
 
 ### Switch buffer.
 ```
-normal: <TAB> -> Go to next Buffer.
-normal: <S-TAB> -> Go to previous Buffer.
+normal: <Leader><TAB> -> Go to next Buffer.
+normal: <Leader><S-TAB> -> Go to previous Buffer.
 normal: <Leader>w -> Close Buffer.
 normal: <A-1> -> Go to first Buffer.
 normal: <A-2> -> Go to second Buffer.
@@ -211,7 +213,7 @@ normal: <A-6> -> Go to sixth Buffer.
 ```
 select: K -> Move line up.
 select: J -> Move line down.
-normal: <A-u> -> Move line up.
+normal: <A-k> -> Move line up.
 normal: <A-j> -> Move line down.
 ```
 
@@ -240,7 +242,7 @@ insert: <C-a> -> Go to start of line.
 
 ### Toggle Highlights
 ```
-normal: <Leader>l -> Toggle highlights
+normal: <Leader>h -> Toggle highlights
 ```
 
 ### Telescope
@@ -248,17 +250,24 @@ normal: <Leader>l -> Toggle highlights
 normal: <C-p> -> Find files in telescope.
 normal: <Leader>ff -> Find files in telescope.
 normal: <Leader>fo -> Find old files in telescope.
-normal: <Leader>fw -> Grep in telescope.
+normal: <Leader>fg -> Grep in telescope.
 normal: <Leader>fb -> Find buffer in telescope.
 normal: <Leader>fh -> Find help tags in telescope.
-normal: <Leader>fm -> Find media files in telescope.
+normal: <Leader>fm -> Find man pages in telescope.
+normal: <Leader>fM -> Find media files in telescope.
 normal: <Leader>fp -> Find project in telescope.
+```
+
+### Compe keymaps
+```
+insert: <C-Space> -> compe complete.
 ```
 
 ### Dashboard
 ```
-normal: <Leader>fn -> New file in Dashboard.
-normal: <Leader>bm -> Dashboard jumpmarks.
+normal: <Leader>;; -> Go to Dashboard.
+normal: <Leader>;n -> New file in Dashboard.
+normal: <Leader>;m -> Dashboard jumpmarks.
 ```
 
 ### nvim-tree.lua
@@ -277,13 +286,49 @@ visual: <Leader>, -> Toggle Comment.
 ```
 normal: <Leader>gg -> Open Neogit window.
 normal: <Leader>gc -> Open Neogit commit window.
+normal: [g -> Go to next hunk.
+normal: ]g -> Go to previous hunk.
+```
+
+### Diagnostics (Trouble Toggle)
+```
+normal: <Leader>dt -> Trouble Toggle window.
+normal: <Leader>do -> Open Todo Trouble window.
+normal: <Leader>dw -> Trouble Toggle lsp workspace diagnostics window.
+normal: <Leader>dd -> Trouble Toggle lsp document diagnostics window.
+normal: <Leader>dq -> Trouble Toggle quickfix window.
+normal: <Leader>dl -> Trouble Toggle loclist.
+normal: <Leader>dr -> Trouble Toggle lsp references.
+normal: gR -> Trouble Toggle lsp references.
+normal: <Leader>dot -> Open Todo telescope.
+```
+
+### Diagnostics (LSPSaga)
+```
+normal: <Leader>e -> LSPSaga show line diagnostics.
+normal: [e -> LSPSaga jump to previous diagnostic.
+normal: ]e -> LSPSaga jump to next diagnostic.
+normal: <Leader>la -> LSPSaga code action.
+normal: <Leader>ld -> Telescope lsp_document_diagnostics.
+normal: <Leader>lw -> Telescope lsp_workspace_diagnostics.
+normal: <Leader>lf -> lua vim.lsp.buf.formatting().
+normal: <Leader>lh -> lua require("lspsaga.hover").render_hover_doc().
+normal: <Leader>lI -> LspInfo.
+normal: <Leader>ll -> lua require"lspsaga.provider".lsp_finder().
+normal: <Leader>lp -> lua require"lspsaga.provider".preview_definition().
+normal: <Leader>lq -> Telescope quickfix.
+normal: <Leader>lr -> lua require("lspsaga.rename").rename().
+normal: <Leader>lt -> lua vim.lsp.buf.type_definition().
+normal: <Leader>lx -> cclose.
+normal: <Leader>lsd -> Telescope lsp_document_symbols.
+normal: <Leader>lsw -> Telescope lsp_dynamic_workspace_symbols.
 ```
 
 ## Todos
 
-- [ ] Complete linter (flake8) and formatter (black) integration with native LSP.
-- [ ] Configure statusbar themes to match overall theme.
-- [ ] Add screenshots to README.md and edit text.
+- [X] Complete linter (flake8) and formatter (black) integration with native LSP.
+- [X] Configure statusbar themes to match overall theme.
+- [X] Add screenshots to README.md and edit text.
 
 ## Inspired by
 

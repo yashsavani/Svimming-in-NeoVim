@@ -37,7 +37,7 @@ local icons = {
 
 local colors = {
   bg0_h = "#1d2021",
-  bg0 = "#282828",
+  bg0 = "#2b2d3a",
   bg1 = "#3c3836",
   bg2 = "#504945",
   bg3 = "#665c54",
@@ -117,7 +117,7 @@ local mode_map = {
 local sep = {
   -- right_filled = "", -- e0b6
   -- left_filled = "", -- e0b4
-  right_filled = " ", -- e0ca
+  right_filled = " ", -- e0ca
   left_filled = " ", -- e0c8
   -- right_filled = "", -- e0b2
   -- left_filled = "", -- e0b0

@@ -43,10 +43,14 @@ cmd "syntax enable" -- Enable syntax highlighting.
 -- Theme
 -- require("onedark").setup()
 -- vim.g.onedark_style = "warm"
-vim.g.sonokai_style = "andromeda"
-vim.g.sonokai_enable_italic = 1
-vim.g.sonokai_transparent_background = 1
-cmd "colorscheme sonokai"
+
+-- vim.g.sonokai_style = "andromeda"
+-- vim.g.sonokai_enable_italic = 1
+-- vim.g.sonokai_transparent_background = 1
+-- cmd "colorscheme sonokai"
+
+vim.g.gruvbox_transparent = true
+cmd "colorscheme gruvbox-flat"
 
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 local function opt(scope, key, value)
@@ -218,7 +222,7 @@ map("n", "<Leader>dot", [[:TodoTelescope<CR>]], noremap_silent)
 map("n", "<Leader>e", [[:lua require"lspsaga.diagnostic".show_line_diagnostics()<CR>]],
     noremap_silent)
 map("n", "[e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]], noremap_silent)
-map("n", "]e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>]], noremap_silent)
+map("n", "]e", [[:lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>]], noremap_silent)
 
 -- LSP keymaps.
 map("n", "<Leader>la", [[:lua require("lspsaga.codeaction").code_action()<CR>]], noremap_silent)
@@ -246,8 +250,8 @@ map("n", "<C-k>", [[:lua require("lspsaga.signaturehelp").signature_help()<CR>]]
 -- Neogit keymaps.
 map("n", "<Leader>gg", [[:lua require("neogit").open({ kind = "vsplit" })<CR>]], noremap_silent)
 map("n", "<Leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], noremap_silent)
-map("n", "<Leader>gj", [[:lua require("gitsigns").next_hunk()<CR>]], noremap_silent)
-map("n", "<Leader>gk", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_silent)
+map("n", "[g", [[:lua require("gitsigns").next_hunk()<CR>]], noremap_silent)
+map("n", "]g", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_silent)
 
 -- AUTOCOMMANDS
 cmd "filetype plugin indent on"

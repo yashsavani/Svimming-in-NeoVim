@@ -13,7 +13,7 @@ return packer.startup(function()
   -- Themes
   use "sainnhe/sonokai"
   use "navarasu/onedark.nvim"
-  use "sainnhe/gruvbox-material"
+  use "eddyekofo94/gruvbox-flat.nvim"
   use "rafamadriz/neon"
   use "kyazdani42/nvim-web-devicons"
 
