@@ -74,9 +74,17 @@ return packer.startup(function()
     requires = "nvim-lua/plenary.nvim",
     config = function() require("todo-comments").setup() end,
   }
-  use "preservim/vim-pencil"
+  -- use "preservim/vim-pencil"
+  use "godlygeek/tabular"
+  use "plasticboy/vim-markdown"
   use "tpope/vim-abolish"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
+  use {
+    "jghauser/auto-pandoc.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("auto-pandoc") end,
+  }
+  use "mbbill/undotree"
 
   -- Statuslines
   use { "glepnir/galaxyline.nvim", branch = "main" }

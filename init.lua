@@ -26,6 +26,7 @@ require("plugins.neogit")
 require("plugins.comment")
 require("plugins.autopairs")
 require("plugins.neoscroll")
+require("plugins.which-key")
 cmd "runtime macros/sandwich/keymap/surround.vim"
 require("plugins.indentline")
 require("plugins.dashboard")
@@ -263,10 +264,5 @@ vim.api.nvim_exec([[
   au Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
   au FileType markdown setlocal spell
   au FileType gitcommit setlocal spell
-  au Filetype markdown setlocal com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:-,b:1. | set formatoptions=tcroqln
-  augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-    autocmd FileType text         call pencil#init()
-  augroup END
+  au Filetype markdown setlocal com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:-,b:1. | set formatoptions=tcroqln | set conceallevel=2
 ]], false)
