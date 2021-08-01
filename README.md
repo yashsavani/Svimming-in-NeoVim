@@ -28,7 +28,7 @@ With the introduction of Treesitter, Native LSP, and custom LuaJIT extensibility
 
 One of the things that has always held me back from personalizing my Vim experience has been using VimScript. I was never a huge fan of the language, and have regularly lamented the lack of a formal language as the default configuration language for Vim. In fact, I expect a large part of Emacs' success can be owed to the fact that much of Emacs is written in Elisp, and that Elisp can be used by users to customize the Emacs experience further. With the introduction of LuaJIT to Neovim v0.5.0, Neovim now has a similarily powerful tool. Now the latest version of Neovim ships with a default Lua-based configuration language that is both well featured and fast (through the Just in Time Compiler). We are going to try to write as much of the configuration as we can in Lua, and therefore only use VimScript where it is unavoidable. My primary programming language is Python, though I do occasionally dabble in other functional languages like Haskell, Julia, and Lisp languages, I also often use utility languages like JavaScript for special purposes like making the front-end for web applications. However, I have never used Lua before. Nevertheless, I found learning Lua surprisingly easy, and quite enjoyable. Especially coming from a background in Python, Lua is quite a simple language and shares many similarities to other modern general purpose programming languages like Python. There were two key resources I used for learning Lua:
 
-1. https://www.youtube.com/watch?v=iMacxZQMPXs (Derek Banas' Tutorial on Lua), and 
+1. https://www.youtube.com/watch?v=iMacxZQMPXs (Derek Banas' Tutorial on Lua), and
 2. https://learnxinyminutes.com/docs/lua/.
 
 For someone coming from a Python background, some of the gotchas beyond the syntax changes are:
@@ -112,7 +112,7 @@ If you want to use this configuration for yourself, follow these instructions:
 2. Clone this repository into your `~/.config/nvim/` directory.
 3. Start up Neovim using the `nvim` command. You should see a bunch of errors. Keep pressing enter to temporarily ignore them.
 4. Once you have passed all the errors install the plugins by typing `:PackerSync` into the console in normal mode.
-5. Once all the plugins have been installed (Some will fail, but that's okay as they will work once the Treesitter plugins have been installed) quit out of nvim and start it again. This time you shouldn't have any errors, and your Neovim should be configured to work based on this repository. 
+5. Once all the plugins have been installed (Some will fail, but that's okay as they will work once the Treesitter plugins have been installed) quit out of nvim and start it again. This time you shouldn't have any errors, and your Neovim should be configured to work based on this repository.
 
 If you see a couple of symbols that look like question marks or weird characters, it may be because you are using a font that is not patched to include NerdFont icons. To remedy this you can either download a patched font from https://github.com/ryanoasis/nerd-fonts, or you can use the patched version of Cascadia Code I have provided in this repository in the `CasKa_NF` directory. Please check your OS documentation for specific instructions on how to install fonts on your system. Once you have installed the font, make sure you are using that font for your terminal. The weird symbols should be replaced by the appropriate iconography chosen in this repository.
 
@@ -151,13 +151,13 @@ For now I have elected to go with the gruvbox-flat theme, however this is subjec
 
 The Leader key is remapped to `<Space>`.
 
-### Better escapes.
+### Better escapes
 ```
 insert: jk -> Normal mode.
 command: jk -> Cancel command.
 ```
 
-### Better window resizing.
+### Better window resizing
 ```
 normal: <S-Right> -> Increase width of window by 2 columns.
 normal: <S-Up> -> Increase height of window by 2 columns.
@@ -165,7 +165,7 @@ normal: <S-Left> -> Decrease width of window by 2 columns.
 normal: <S-Down> -> Decrease height of window by 2 columns.
 ```
 
-### Better terminal keymaps.
+### Better terminal keymaps
 ```
 normal: <Leader>tl -> Open a terminal in a new right window.
 normal: <Leader>tj -> Open a terminal in a new bottom window.
@@ -182,7 +182,7 @@ terminal: <Esc> -> Normal mode in terminal.
 terminal: jk -> Normal mode in terminal.
 ```
 
-### Better window navigation.
+### Better window navigation
 ```
 normal: <C-h> -> Move to left window.
 normal: <C-j> -> Move to lower window.
@@ -190,13 +190,13 @@ normal: <C-l> -> Move to upper window.
 normal: <C-k> -> Move to right window.
 ```
 
-### Better indentation.
+### Better indentation
 ```
 visual: < -> Keep visual selection after indenting.
 visual: > -> Keep visual selection after indenting.
 ```
 
-### Switch buffer.
+### Switch buffer
 ```
 normal: <Leader><TAB> -> Go to next Buffer.
 normal: <Leader><S-TAB> -> Go to previous Buffer.
@@ -209,7 +209,7 @@ normal: <A-5> -> Go to fifth Buffer.
 normal: <A-6> -> Go to sixth Buffer.
 ```
 
-### Move selected  line / block of text in visual mode.
+### Move selected  line / block of text in visual mode
 ```
 select: K -> Move line up.
 select: J -> Move line down.
@@ -217,7 +217,7 @@ normal: <A-k> -> Move line up.
 normal: <A-j> -> Move line down.
 ```
 
-### Better nav for autocomplete.
+### Better nav for autocomplete
 ```
 insert: <C-j> -> Next autocomplete option.
 insert: <C-k> -> Previous autocomplete option.
@@ -234,7 +234,7 @@ normal: <Leader>q -> Quit.
 normal: <Leader>x -> Close Window.
 ```
 
-### Emacs sol and eol.
+### Emacs sol and eol
 ```
 insert: <C-e> -> Go to end of line.
 insert: <C-a> -> Go to start of line.
