@@ -1,4 +1,3 @@
-local gl = req
 local gl = require "galaxyline"
 local gls = gl.section
 local devicons = require "nvim-web-devicons"

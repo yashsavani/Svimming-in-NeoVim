@@ -290,6 +290,31 @@ normal: [g -> Go to next hunk.
 normal: ]g -> Go to previous hunk.
 ```
 
+### GitSigns
+```
+normal: <Leader>gs -> Stage hunk.
+visual: <Leader>gs -> Stage hunk.
+normal: <Leader>gu -> Undo stage hunk.
+normal: <Leader>gr -> Reset hunk.
+visual: <Leader>gr -> Reset hunk.
+normal: <Leader>gR -> Reset buffer.
+normal: <Leader>gp -> Preview hunk.
+normal: <Leader>gb -> Blame line.
+```
+
+### LspConfig
+```
+normal: gD -> Go to declaration.
+normal: gd -> Go to definition.
+normal: gi -> Go to implementation.
+normal: gr -> Get to references.
+normal: [d -> Go to next diagnostic.
+normal: ]d -> Go to previous diagnostic.
+normal: <Leader>p -> Format document.
+normal: <Leader>P -> Format document.
+visual: <Leader>p -> Format selected range.
+```
+
 ### Diagnostics (Trouble Toggle)
 ```
 normal: <Leader>dt -> Trouble Toggle window.

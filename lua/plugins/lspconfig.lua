@@ -8,7 +8,7 @@ local on_attach = function(client, bufnum)
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Mappings
-  buf_set_keymap("n", "gD", [[:lua vim.lsp.buf.declaration()]], noremap_silent)
+  buf_set_keymap("n", "gD", [[:lua vim.lsp.buf.declaration()<CR>]], noremap_silent)
   buf_set_keymap("n", "gd", [[<Cmd>lua vim.lsp.buf.definition()<CR>]], noremap_silent)
   buf_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], noremap_silent)
   buf_set_keymap("n", "gr", [[<cmd>lua vim.lsp.buf.references()<CR>]], noremap_silent)
@@ -30,8 +30,8 @@ local on_attach = function(client, bufnum)
   buf_set_keymap("n", "<Leader>p",
                  [[<cmd>lua vim.lsp.buf.formatting_seq_sync(nil, 1000, { 'html', 'php', 'efm' })<CR>]],
                  noremap_silent)
-  -- buf_set_keymap("n", "<Leader>P", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], noremap_silent)
-  -- buf_set_keymap("v", "<Leader>p", [[<cmd>lua vim.lsp.buf.range_formatting()<CR>]], noremap_silent)
+  buf_set_keymap("n", "<Leader>P", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], noremap_silent)
+  buf_set_keymap("v", "<Leader>p", [[<cmd>lua vim.lsp.buf.range_formatting()<CR>]], noremap_silent)
   -- buf_set_keymap("n", "<Leader>l", [[<cmd>lua require'lsp-codelens'.buf_codelens_action()<CR>]], noremap_silent)
 
   -- vim already has builtin docs
@@ -151,11 +151,7 @@ require"lspconfig".efm.setup {
         { formatCommand = "isort --quiet -", formatStdin = true },
       },
       markdown = {
-        {
-          lintCommand = "markdownlint -s",
-          lintStdin = true,
-          lintFormats = { "%f:%l:%c %m" },
-        },
+        { lintCommand = "markdownlint -s", lintStdin = true, lintFormats = { "%f:%l:%c %m" } },
       },
     },
   },
