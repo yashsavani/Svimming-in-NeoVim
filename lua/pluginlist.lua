@@ -85,6 +85,7 @@ return packer.startup(function()
     config = function() require("auto-pandoc") end,
   }
   use "mbbill/undotree"
+  use "vimwiki/vimwiki"
 
   -- Statuslines
   use { "glepnir/galaxyline.nvim", branch = "main" }

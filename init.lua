@@ -37,6 +37,9 @@ require("plugins.barbar")
 -- SETTINGS
 vim.g.mapleader = " "
 vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
+vim.g.vimwiki_list = { { path = "~/Box/brain", syntax = "markdown", ext = ".md" } }
+vim.g.vimwiki_ext2syntax = { [".md"] = "markdown", [".markdown"] = "markdown", [".mdown"] = "markdown" }
+vim.g.vimwiki_markdown_link_ext = 1
 
 cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
