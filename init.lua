@@ -257,6 +257,9 @@ map("n", "<Leader>gc", [[:lua require("neogit").open({ "commit" })<CR>]], norema
 map("n", "[g", [[:lua require("gitsigns").next_hunk()<CR>]], noremap_silent)
 map("n", "]g", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_silent)
 
+-- Datetime keymaps
+map("n", "<Leader>now", [[:put =strftime('%c')<CR>]], noremap_silent)
+
 -- AUTOCOMMANDS
 cmd "filetype plugin indent on"
 vim.api.nvim_exec([[
