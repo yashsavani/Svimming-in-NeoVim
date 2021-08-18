@@ -268,7 +268,5 @@ vim.api.nvim_exec([[
   au BufEnter {} if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Dashboard | endif
   au BufRead,BufNewFile *.lua set formatoptions-=cro
   au Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-  au FileType markdown setlocal spell
   au FileType gitcommit setlocal spell
-  au Filetype markdown setlocal com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,b:-,b:1. | set formatoptions=tcroqln | set conceallevel=2 | set textwidth=79
 ]], false)

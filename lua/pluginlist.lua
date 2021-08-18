@@ -86,6 +86,10 @@ return packer.startup(function()
   }
   use "mbbill/undotree"
   use "vimwiki/vimwiki"
+  use {
+    "AckslD/nvim-neoclip.lua",
+    config = function() require('neoclip').setup() end,
+  }
 
   -- Statuslines
   use { "glepnir/galaxyline.nvim", branch = "main" }
