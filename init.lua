@@ -37,7 +37,7 @@ require("plugins.barbar")
 -- SETTINGS
 vim.g.mapleader = " "
 vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
-vim.g.vimwiki_list = { { path = "~/Box/brain", syntax = "markdown", ext = ".md" } }
+vim.g.vimwiki_list = { { path = "~/dev/brain", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_ext2syntax = { [".md"] = "markdown", [".markdown"] = "markdown", [".mdown"] = "markdown" }
 vim.g.vimwiki_markdown_link_ext = 1
 
@@ -170,8 +170,16 @@ map("n", "<Leader>q", [[:q<CR>]], noremap_silent)
 map("n", "<Leader>x", [[:close<CR>]], noremap_silent)
 
 -- Emacs-like sol and eol.
-map("i", "<C-e>", [[<Esc>A]], noremap_silent)
-map("i", "<C-a>", [[<Esc>I]], noremap_silent)
+map("i", "<M-e>", [[<Esc>A]], noremap_silent)
+map("i", "<M-a>", [[<Esc>I]], noremap_silent)
+map("i", "<M-f>", [[<S-Right>]], noremap_silent)
+map("i", "<M-b>", [[<S-Left>]], noremap_silent)
+map("i", "<M-p>", [[<Up>]], noremap_silent)
+map("i", "<M-n>", [[<Down>]], noremap_silent)
+
+-- Spelling
+map("i", "<C-f>", [[<C-g>u<Esc>[s1z=`]a<C-g>u]], noremap_silent)
+map("n", "<C-f>", [[[s1z=<C-o>]], noremap_silent)
 
 -- Toggle highlights.
 map("n", "<Leader>h", [[:set hlsearch!<CR>]], noremap_silent)
@@ -258,7 +266,7 @@ map("n", "[g", [[:lua require("gitsigns").next_hunk()<CR>]], noremap_silent)
 map("n", "]g", [[:lua require("gitsigns").prev_hunk()<CR>]], noremap_silent)
 
 -- Datetime keymaps
-map("n", "<Leader>now", [[:put =strftime('%c')<CR>]], noremap_silent)
+map("n", "<Leader>now", [[79i-<Esc>:put =strftime('%c')<CR>]], noremap_silent)
 
 -- AUTOCOMMANDS
 cmd "filetype plugin indent on"

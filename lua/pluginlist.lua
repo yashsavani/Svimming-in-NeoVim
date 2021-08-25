@@ -77,7 +77,6 @@ return packer.startup(function()
   -- use "preservim/vim-pencil"
   use "godlygeek/tabular"
   use "plasticboy/vim-markdown"
-  use "tpope/vim-abolish"
   use { "iamcco/markdown-preview.nvim", run = "cd app && npm install" }
   use {
     "jghauser/auto-pandoc.nvim",
