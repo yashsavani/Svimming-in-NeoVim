@@ -40,6 +40,10 @@ vim.g.python3_host_prog = "/usr/local/anaconda3/bin/python"
 vim.g.vimwiki_list = { { path = "~/dev/brain", syntax = "markdown", ext = ".md" } }
 vim.g.vimwiki_ext2syntax = { [".md"] = "markdown", [".markdown"] = "markdown", [".mdown"] = "markdown" }
 vim.g.vimwiki_markdown_link_ext = 1
+vim.g.vimwiki_table_mappings = 0
+vim.g.UltiSnipsExpandTrigger = "<F12>"
+vim.g.UltiSnipsJumpForwardTrigger = "<F12>"
+vim.g.UltiSnipsJumpBackwardTrigger = "<F12>"
 
 cmd "syntax on"
 cmd "syntax enable" -- Enable syntax highlighting.
@@ -170,8 +174,8 @@ map("n", "<Leader>q", [[:q<CR>]], noremap_silent)
 map("n", "<Leader>x", [[:close<CR>]], noremap_silent)
 
 -- Emacs-like sol and eol.
-map("i", "<M-e>", [[<Esc>A]], noremap_silent)
-map("i", "<M-a>", [[<Esc>I]], noremap_silent)
+map("i", "<C-e>", [[<Esc>A]], noremap_silent)
+map("i", "<C-a>", [[<Esc>I]], noremap_silent)
 map("i", "<M-f>", [[<S-Right>]], noremap_silent)
 map("i", "<M-b>", [[<S-Left>]], noremap_silent)
 map("i", "<M-p>", [[<Up>]], noremap_silent)
@@ -198,7 +202,7 @@ map("n", "<Leader>fp", [[:lua require("telescope").extensions.project.project{}<
     noremap_silent)
 
 -- Compe keymaps.
-map("i", "<C-space>", [[compe#complete()]], { expr = true, silent = true })
+map("i", "<C-space>", [[compe#complete()]], { expr = true, noremap = true, silent = true })
 -- map("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], { expr = true, silent = true })
 -- map("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<S-Tab>"]], { expr = true, silent = true })
 

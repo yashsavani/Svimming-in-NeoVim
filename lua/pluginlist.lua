@@ -38,6 +38,7 @@ return packer.startup(function()
   use "hrsh7th/vim-vsnip"
   use "hrsh7th/nvim-compe"
   use "rafamadriz/friendly-snippets"
+  use "SirVer/ultisnips"
 
   -- Telescope
   use {
